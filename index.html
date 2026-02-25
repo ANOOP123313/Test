@@ -783,7 +783,7 @@
         justify-content: center;
       }
       .btn-view:hover {
-       background: rgba(255, 255, 255, 0.98);
+        background: rgba(255, 255, 255, 0.98);
         transform: translateY(-2px);
         box-shadow:
           0 0 44px 16px rgba(220, 220, 220, 0.3),
@@ -1077,9 +1077,9 @@
         position: absolute;
         inset: -8px;
         border-radius: 68px;
-        box-shadow:
+        /* box-shadow:
           0 0 32px 12px rgba(200, 200, 200, 0.18),
-          0 0 64px 24px rgba(180, 180, 180, 0.1);
+          0 0 64px 24px rgba(180, 180, 180, 0.1); */
         opacity: 0;
         transition: opacity 0.4s;
         pointer-events: none;
@@ -1151,12 +1151,12 @@
       }
       .proj-list {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 44px;
       }
       .proj-card {
         position: relative;
-        width: 100%;
+        width: 50%;
         height: 400px;
         background: var(--purple);
         border-radius: 28px;
@@ -1670,9 +1670,17 @@
         .about-text {
           font-size: 16px;
         }
-        .email-lbl,
+        .email-lbl {
+          font-size: 19px;
+          font-weight: 600;
+          color: var(--text);
+        }
+
         .email-a {
-          font-size: 16px;
+          font-size: 19px;
+          color: var(--p-light);
+          text-decoration: none;
+          transition: color 0.3s;
         }
         .socials {
           gap: 22px;
@@ -2333,7 +2341,8 @@
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     >
-                      <polyline points="6 9 12 15 18 9" /></svg>
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
                   </div>
                 </div>
                 <div class="svc-body">
@@ -2509,30 +2518,60 @@
             </p>
             <div class="cinfo">
               <div>
-                <span class="email-lbl">Email:</span><br /><a href="/cdn-cgi/l/email-protection#d7b6a4a0beb9a4bfb6bda297b2afb6baa7bbb2f9b4b8ba" class="email-a"><span class="__cf_email__" data-cfemail="fb9a888c929588939a918ebb9e839a968b979ed5989496">[email&#160;protected]</span></a
+                <span class="email-lbl">Email:</span><br /><a
+                  href="mailto:aswincreates.dev@gmail.com"
+                  class="email-a"
+                  >aswincreates.dev@gmail.com</a
                 >
               </div>
               <div class="socials">
-                <img
-                  src="assets/images/img_github_1.svg"
-                  alt="GitHub"
-                  class="soc-ic"
-                />
-                <img
-                  src="assets/images/img_instagram_1.svg"
-                  alt="Instagram"
-                  class="soc-ic"
-                />
-                <img
-                  src="assets/images/img_behance_1.svg"
-                  alt="Behance"
-                  class="soc-ic"
-                />
-                <img
-                  src="assets/images/img_vector_deep_purple_a200.svg"
-                  alt="LinkedIn"
-                  class="soc-ic"
-                />
+                <a
+                  href="https://github.com/aswinshaju2004"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/images/img_github_1.svg"
+                    alt="GitHub"
+                    class="soc-ic"
+                  />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/images/img_instagram_1.svg"
+                    alt="Instagram"
+                    class="soc-ic"
+                  />
+                </a>
+
+                <a
+                  href="https://www.behance.net/aswinshaju2004"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/images/img_behance_1.svg"
+                    alt="Behance"
+                    class="soc-ic"
+                  />
+                </a>
+
+                <a
+                  href="https://pin.it/406qm2NFc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="assets/images/img_vector_deep_purple_a200.svg"
+                    alt="Pinterest"
+                    class="soc-ic"
+                  />
+                </a>
               </div>
             </div>
             <!-- FIX 2: glowing white pill -->
@@ -2702,7 +2741,11 @@
       </svg>
     </button>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script>
       /* THEME — shared function, both desktop + mobile toggle use it */
       const html = document.documentElement;
       function applyTheme(t) {
@@ -2794,9 +2837,8 @@
         e.preventDefault();
         const btn = e.target.querySelector(".c-submit");
         const orig = btn.textContent;
-        btn.textContent = "Sent! ✓";
-        btn.style.background =
-          "linear-gradient(135deg,rgba(34,197,94,.8),rgba(22,163,74,.8))";
+        btn.textContent = "Sent Successfully! ✓";
+
         setTimeout(() => {
           btn.textContent = orig;
           btn.style.background = "";
@@ -2829,7 +2871,7 @@
       });
       function closeMenu() {
         mobNav.classList.remove("open");
-         hbg.classList.remove("open");
+        hbg.classList.remove("open");
       }
       document.addEventListener("click", (e) => {
         if (!navFull.contains(e.target)) closeMenu();
