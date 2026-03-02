@@ -482,10 +482,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 12px 4px;
-        /* border and margin removed since the utils row now sits in the top bar */
         gap: 10px;
       }
-      /* ensure buttons placed in the top bar don’t flex-grow */
       .mob-utils .mob-talk {
         flex: none;
         padding: 5px 12px;
@@ -580,6 +578,7 @@
         align-items: center;
         transition: background 0.4s;
         overflow-x: hidden;
+        padding-top: 10px;
       }
 
       /* HERO */
@@ -1102,7 +1101,7 @@
         border-radius: 60px;
         cursor: pointer;
         text-decoration: none;
-        box-shadow: 0 0 24px 6px rgba(200, 200, 200, 0.15);
+        /* box-shadow: 0 0 24px 6px rgba(200, 200, 200, 0.15); */
         transition: all 0.4s var(--ease);
         position: relative;
       }
@@ -1393,19 +1392,17 @@
         box-shadow: 0 14px 38px rgba(109, 40, 217, 0.55);
       }
 
-      /* ═══ SCROLL TO TOP — in document flow, NOT fixed ═══ */
+      /* SCROLL TO TOP */
       .scroll-top-wrap {
         width: 100%;
         display: flex;
         justify-content: flex-end;
         padding: 48px 48px 0;
-        /* fade in when .vis added */
         opacity: 0;
         transform: translateY(16px);
         transition:
           opacity 0.4s var(--ease),
           transform 0.4s var(--ease);
-        /* purely in flow - no position:fixed */
       }
       .scroll-top-wrap.vis {
         opacity: 1;
@@ -1456,7 +1453,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 44px;
-        position: relative; /* needed for absolute centering of icons */
+        position: relative;
       }
       .foot-left {
         display: flex;
@@ -1472,7 +1469,7 @@
         font-size: 46px;
         font-family: "Antonio", sans-serif;
         font-weight: 700;
-        text-align: center;
+        text-align: left;
         color: #121212;
       }
       [data-theme="light"] .foot-name {
@@ -1491,8 +1488,6 @@
         display: flex;
         gap: 30px;
       }
-
-      /* desktop: pin icons in the physical center of the footer */
       @media (min-width: 769px) {
         .foot-soc {
           position: absolute;
@@ -1517,8 +1512,7 @@
         font-size: 17px;
         font-family: "Poppins", sans-serif;
         color: #121212;
-        padding-left: 80px;
-        
+        text-align: right;
       }
       [data-theme="light"] .foot-copy {
         color: #f0f0f0;
@@ -1561,7 +1555,9 @@
         transition-delay: 0.4s;
       }
 
-      /* MOBILE HERO */
+      /* ═══════════════════════════════════════
+         MOBILE HERO
+      ═══════════════════════════════════════ */
       .hero-mob {
         display: none;
         flex-direction: column;
@@ -1570,19 +1566,7 @@
         position: relative;
         z-index: 2;
         animation: fadeUp 0.8s var(--ease) 1s both;
-      }
-      .mob-desig {
-        display: flex;
-        justify-content: space-between;
-        width: 50%;
-        text-align: center;
-        margin-left: 140px;
-        font-family: "Antonio", sans-serif;
-        font-size: clamp(11px, 3.2vw, 15px);
-        font-weight: 400;
-        letter-spacing: 1.5px;
-        color: var(--p-light);
-        text-transform: uppercase;
+        align-items: center; /* centre all children by default */
       }
       .mob-photo {
         width: min(68vw, 260px);
@@ -1646,6 +1630,7 @@
         width: 100%;
         margin-top: 32px;
         gap: 15px;
+        flex-wrap: wrap;
       }
       .mob-name {
         font-family: "Antonio", sans-serif;
@@ -1655,6 +1640,34 @@
         color: var(--text);
         line-height: 1;
       }
+
+      /* ── DESIGNATION LABEL (mobile) ── */
+      .mob-desig {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        padding: 0 16px;
+        text-align: center;
+      }
+      .mob-desig span {
+        font-family: "Antonio", sans-serif;
+        font-size: clamp(11px, 3.4vw, 16px);
+        font-weight: 400;
+        letter-spacing: clamp(1px, 0.6vw, 2px);
+        color: var(--p-light);
+        text-transform: uppercase;
+        white-space: nowrap;          /* single line on large phones */
+      }
+      /* allow wrapping on very small screens */
+      @media (max-width: 360px) {
+        .mob-desig span {
+          white-space: normal;
+          line-height: 1.5;
+        }
+      }
+
       .mob-desc {
         width: 100%;
         margin-top: 18px;
@@ -1718,17 +1731,42 @@
         .about-img-col {
           width: 100%;
         }
+        .footer {
+          padding: 36px 20px 32px;
+          margin-top: 32px;
+          width: 100%;
+          overflow: hidden;
+        }
         .foot-wrap {
           flex-direction: column;
           align-items: flex-start;
+          gap: 35px;
         }
         .foot-left {
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
           width: 100%;
         }
+        .foot-name {
+          text-align: center;
+          font-size: 32px;
+        }
+        .foot-tag {
+          font-size: 14px;
+        }
+        .foot-soc {
+          gap: 18px;
+          top: 70%;
+          flex-wrap: wrap;
+        }
+        .foot-soc img {
+          width: 22px;
+          height: 22px;
+        }
         .foot-copy {
-          text-align: left;
+          font-size: 13px;
+          text-align: center;
+          width: 100%;
         }
         .tools-grid {
           gap: 28px;
@@ -1797,6 +1835,10 @@
           padding: 36px 16px;
           margin-top: 56px;
         }
+        /* Center services heading & description on mobile only */
+        .svc-hdr {
+          text-align: center;
+        }
         .svc-title {
           font-size: 28px;
         }
@@ -1813,18 +1855,40 @@
         }
         .about-title {
           font-size: 34px;
+          text-align: center;
         }
         .about-text {
           font-size: 16px;
+          text-align: center;
+        }
+        .about-img-col {
+          display: none;
+        }
+        .about-content {
+          width: 100%;
+          align-items: center;
+        }
+        .cinfo {
+          align-items: center;
+          text-align: center;
+        }
+        .email-lbl,
+        .email-a {
+          text-align: center;
+          display: block;
         }
         .socials {
           gap: 22px;
+          justify-content: center;
         }
         .soc-ic {
           width: 24px;
           height: 24px;
         }
-        /* Projects — STACK vertically */
+        .btn-story {
+          margin-top: 24px;
+        }
+        /* Projects */
         .proj-section {
           margin-top: 64px;
           padding: 0 16px;
@@ -1846,6 +1910,7 @@
         .proj-card {
           width: 100%;
           height: 240px;
+          border-radius: 28px;
         }
         .proj-name {
           font-size: 16px;
@@ -1898,7 +1963,7 @@
         .contact-sub {
           font-size: 15px;
         }
-        /* Scroll to top — centred on mobile, smaller */
+        /* Scroll to top */
         .scroll-top-wrap {
           padding: 32px 16px 0;
           justify-content: center;
@@ -1911,7 +1976,7 @@
           width: 20px;
           height: 20px;
         }
-        /* Footer — full-width, no overflow */
+        /* Footer */
         .footer {
           padding: 36px 20px 32px;
           margin-top: 32px;
@@ -1929,6 +1994,7 @@
           width: 100%;
         }
         .foot-name {
+          text-align: center;
           font-size: 32px;
         }
         .foot-tag {
@@ -1944,7 +2010,7 @@
         }
         .foot-copy {
           font-size: 13px;
-          text-align: left;
+          text-align: center;
           width: 100%;
         }
       }
@@ -1977,10 +2043,12 @@
           padding: 28px 16px 24px;
         }
         .foot-name {
+          text-align: center;
           font-size: 28px;
         }
         .proj-card {
           height: 210px;
+          border-radius: 28px;
         }
         .contact-section {
           padding: 0 12px;
@@ -2036,6 +2104,7 @@
           font-size: 64px;
         }
         .foot-name {
+          text-align: left;
           font-size: 56px;
         }
       }
@@ -2071,115 +2140,31 @@
                 />
               </svg>
               <svg class="icon-sun" viewBox="0 0 24 24" fill="none">
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="5"
-                  fill="#f59e0b"
-                  stroke="#f59e0b"
-                  stroke-width="1"
-                />
-                <line
-                  x1="12"
-                  y1="1"
-                  x2="12"
-                  y2="4"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="12"
-                  y1="20"
-                  x2="12"
-                  y2="23"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="1"
-                  y1="12"
-                  x2="4"
-                  y2="12"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="20"
-                  y1="12"
-                  x2="23"
-                  y2="12"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="4.22"
-                  y1="4.22"
-                  x2="6.34"
-                  y2="6.34"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="17.66"
-                  y1="17.66"
-                  x2="19.78"
-                  y2="19.78"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="19.78"
-                  y1="4.22"
-                  x2="17.66"
-                  y2="6.34"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="6.34"
-                  y1="17.66"
-                  x2="4.22"
-                  y2="19.78"
-                  stroke="#f59e0b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <circle cx="12" cy="12" r="5" fill="#f59e0b" stroke="#f59e0b" stroke-width="1" />
+                <line x1="12" y1="1" x2="12" y2="4" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="12" y1="20" x2="12" y2="23" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="1" y1="12" x2="4" y2="12" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="20" y1="12" x2="23" y2="12" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="19.78" y1="4.22" x2="17.66" y2="6.34" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+                <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
               </svg>
             </button>
             <button
               class="talk-btn"
-              onclick="
-                document
-                  .getElementById('contact')
-                  .scrollIntoView({ behavior: 'smooth' })
-              "
+              onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
             >
               Let's Talk
             </button>
             <div class="mob-utils">
-              <button 
+              <button
                 class="mob-talk"
-                onclick="
-                  closeMenu();
-                  document
-                    .getElementById('contact')
-                    .scrollIntoView({ behavior: 'smooth' });
-                "
+                onclick="closeMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"
               >
                 Let's Talk
               </button>
-              <button
-                class="mob-theme-tog"
-                id="mobThemeTog"
-                aria-label="Toggle theme"
-              >
+              <button class="mob-theme-tog" id="mobThemeTog" aria-label="Toggle theme">
                 <svg class="icon-moon" viewBox="0 0 40 40" fill="none">
                   <path
                     d="M15.9026 0C11.7718 3.14114 9.1047 8.10773 9.1047 13.6975C9.1047 23.1956 16.8044 30.8953 26.3025 30.8953C31.8923 30.8953 36.8579 28.2273 39.999 24.0964C38.0165 33.1902 29.9208 40 20.2327 40C9.05847 40 0 30.9415 0 19.7673C0 10.0795 6.80916 1.98274 15.9026 0Z"
@@ -2187,19 +2172,13 @@
                   />
                 </svg>
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="5"
-                    fill="#f59e0b"
-                    stroke="#f59e0b"
-                    stroke-width="1"
-                  />
+                  <circle cx="12" cy="12" r="5" fill="#f59e0b" stroke="#f59e0b" stroke-width="1" />
                 </svg>
               </button>
-            <button class="hbg" id="hbg" aria-label="Menu">
-              <span></span><span></span><span></span>
-            </button>
+              <button class="hbg" id="hbg" aria-label="Menu">
+                <span></span><span></span><span></span>
+              </button>
+            </div>
           </div>
           <div class="mob-nav" id="mobNav">
             <a href="#home" onclick="closeMenu()">Home</a>
@@ -2207,10 +2186,6 @@
             <a href="#projects" onclick="closeMenu()">Projects</a>
             <a href="#tools" onclick="closeMenu()">Skills</a>
             <a href="#contact" onclick="closeMenu()">Contact</a>
-                    
-                
-              </button>
-            </div>
           </div>
         </nav>
         <div
@@ -2234,6 +2209,8 @@
       <!-- HERO -->
       <div class="hero-wrap" id="home">
         <div class="hero-glow"></div>
+
+        <!-- DESKTOP HERO -->
         <div class="hero-desk">
           <div class="desig-row">
             <span>UI/UX DESIGNER</span><span>GRAPHIC DESIGNER</span>
@@ -2244,39 +2221,16 @@
             <div class="wave-btn">
               <svg width="83" height="83" viewBox="0 0 83 83" fill="none">
                 <g clip-path="url(#wh1)">
-                  <path
-                    d="M15.2812 48.2348C14.4968 56.2811 22.3121 63.3012 30.2869 62.5029C23.226 60.3702 17.6312 55.1782 15.2812 48.2348Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M30.2869 62.5029L30.0925 62.5203C30.1171 62.5192 30.1744 62.5114 30.2869 62.5029Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M15.4733 62.8071C17.7931 68.6306 26.4594 70.1572 31.0831 66.0595C25.184 66.5709 21.1788 66.6102 15.4733 62.8071Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M53.084 27.9464C54.3837 19.7646 46.7334 12.4864 38.6259 12.8847C45.6692 15.317 51.0908 20.8076 53.084 27.9464Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M53.919 22.3198C56.9475 17.3625 53.022 10.5568 47.4941 9.64693C51.197 13.4658 53.1867 17.0412 53.919 22.3198Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M64.4134 15.2927C63.2516 14.8625 61.9803 14.8272 60.7964 15.1921C53.6472 17.3883 55.2259 27.094 54.7562 31.2164C54.7562 31.2164 42.7111 18.1213 38.6058 13.8408C34.3722 9.42494 29.0914 12.2284 28.3209 15.5768C23.1728 12.7295 16.798 18.2631 19.2499 22.894C14.0667 24.0606 13.5544 29.6846 15.6623 32.5419C11.7112 33.6231 11.3687 39.0256 13.7567 42.0845C13.8806 42.2441 25.0302 53.7848 28.3325 57.869C28.7159 58.3429 29.1128 58.854 29.5301 59.3924C32.2719 62.9279 36.0273 67.7696 42.5637 70.577C45.3777 71.7852 48.7757 71.8369 52.3929 70.7257C58.7682 68.7673 64.8949 63.4229 68.0016 57.1083C70.7844 51.4535 71.1098 45.4613 68.9429 39.7786C66.9958 34.6702 67.1454 29.2476 67.2649 24.8897C67.3941 20.1608 67.4952 16.4252 64.4134 15.2927ZM65.724 40.5785C70.0744 51.867 61.5013 65.1526 51.6913 68.1661C48.6942 69.0868 45.4411 69.5563 42.9959 68.5062C35.9841 65.4942 32.7938 60.0814 29.9509 56.5705C26.5529 52.3692 18.9974 44.6113 15.2834 40.6818C13.7631 39.0729 14.0896 34.5548 16.8179 33.7167L29.8271 48.0346L33.3582 48.9085C33.3582 48.9085 21.9596 36.1262 18.2225 31.662C16.0408 29.0555 17.1049 24.7722 20.1804 24.3432L36.3536 42.1927L39.8869 43.0704L21.1161 22.526C19.7615 18.2788 25.5717 16.4213 27.6913 18.4932C33.0557 23.7376 43.7401 35.5808 43.7401 35.5808L47.2711 36.458L29.6214 17.0784C30.8695 13.7049 34.6699 12.9566 37.2761 15.7856C40.4065 19.1832 53.7961 34.0042 53.7961 34.0042C46.7424 39.4412 43.9616 49.7749 52.2824 56.5638C44.8935 48.6168 50.8761 39.5589 54.9376 35.9248C56.4745 34.5483 56.6533 32.7834 56.6533 32.7834L56.6496 32.7856C56.9266 31.4639 56.4257 29.9642 56.4185 27.29C56.4048 21.5019 57.7547 18.0178 60.9999 17.021C61.7479 16.7912 62.8623 17.0612 63.4908 17.5663C66.6672 20.1202 61.6813 30.0901 65.724 40.5785Z"
-                    fill="white"
-                  />
+                  <path d="M15.2812 48.2348C14.4968 56.2811 22.3121 63.3012 30.2869 62.5029C23.226 60.3702 17.6312 55.1782 15.2812 48.2348Z" fill="white"/>
+                  <path d="M30.2869 62.5029L30.0925 62.5203C30.1171 62.5192 30.1744 62.5114 30.2869 62.5029Z" fill="white"/>
+                  <path d="M15.4733 62.8071C17.7931 68.6306 26.4594 70.1572 31.0831 66.0595C25.184 66.5709 21.1788 66.6102 15.4733 62.8071Z" fill="white"/>
+                  <path d="M53.084 27.9464C54.3837 19.7646 46.7334 12.4864 38.6259 12.8847C45.6692 15.317 51.0908 20.8076 53.084 27.9464Z" fill="white"/>
+                  <path d="M53.919 22.3198C56.9475 17.3625 53.022 10.5568 47.4941 9.64693C51.197 13.4658 53.1867 17.0412 53.919 22.3198Z" fill="white"/>
+                  <path d="M64.4134 15.2927C63.2516 14.8625 61.9803 14.8272 60.7964 15.1921C53.6472 17.3883 55.2259 27.094 54.7562 31.2164C54.7562 31.2164 42.7111 18.1213 38.6058 13.8408C34.3722 9.42494 29.0914 12.2284 28.3209 15.5768C23.1728 12.7295 16.798 18.2631 19.2499 22.894C14.0667 24.0606 13.5544 29.6846 15.6623 32.5419C11.7112 33.6231 11.3687 39.0256 13.7567 42.0845C13.8806 42.2441 25.0302 53.7848 28.3325 57.869C28.7159 58.3429 29.1128 58.854 29.5301 59.3924C32.2719 62.9279 36.0273 67.7696 42.5637 70.577C45.3777 71.7852 48.7757 71.8369 52.3929 70.7257C58.7682 68.7673 64.8949 63.4229 68.0016 57.1083C70.7844 51.4535 71.1098 45.4613 68.9429 39.7786C66.9958 34.6702 67.1454 29.2476 67.2649 24.8897C67.3941 20.1608 67.4952 16.4252 64.4134 15.2927ZM65.724 40.5785C70.0744 51.867 61.5013 65.1526 51.6913 68.1661C48.6942 69.0868 45.4411 69.5563 42.9959 68.5062C35.9841 65.4942 32.7938 60.0814 29.9509 56.5705C26.5529 52.3692 18.9974 44.6113 15.2834 40.6818C13.7631 39.0729 14.0896 34.5548 16.8179 33.7167L29.8271 48.0346L33.3582 48.9085C33.3582 48.9085 21.9596 36.1262 18.2225 31.662C16.0408 29.0555 17.1049 24.7722 20.1804 24.3432L36.3536 42.1927L39.8869 43.0704L21.1161 22.526C19.7615 18.2788 25.5717 16.4213 27.6913 18.4932C33.0557 23.7376 43.7401 35.5808 43.7401 35.5808L47.2711 36.458L29.6214 17.0784C30.8695 13.7049 34.6699 12.9566 37.2761 15.7856C40.4065 19.1832 53.7961 34.0042 53.7961 34.0042C46.7424 39.4412 43.9616 49.7749 52.2824 56.5638C44.8935 48.6168 50.8761 39.5589 54.9376 35.9248C56.4745 34.5483 56.6533 32.7834 56.6533 32.7834L56.6496 32.7856C56.9266 31.4639 56.4257 29.9642 56.4185 27.29C56.4048 21.5019 57.7547 18.0178 60.9999 17.021C61.7479 16.7912 62.8623 17.0612 63.4908 17.5663C66.6672 20.1202 61.6813 30.0901 65.724 40.5785Z" fill="white"/>
                 </g>
                 <defs>
                   <clipPath id="wh1">
-                    <rect
-                      width="66.4145"
-                      height="66.4145"
-                      fill="white"
-                      transform="translate(0 19.5048) rotate(-17.0762)"
-                    />
+                    <rect width="66.4145" height="66.4145" fill="white" transform="translate(0 19.5048) rotate(-17.0762)"/>
                   </clipPath>
                 </defs>
               </svg>
@@ -2294,87 +2248,54 @@
             </div>
             <div class="desc-r">
               Delivering impactful<br />visual designs shaped by<br />3+ years
-              of Graphic Designing experience and 1 year of UI/UX designing<br />experience working with diverse client needs.
+              of Graphic Designing experience and 1 year of UI/UX designing experience working with diverse client needs.
             </div>
           </div>
           <div class="btns-row">
             <a href="#projects" class="btn-view">View Projects</a>
-            <a href="assets/ASWIN-SHAJU-FlowCV-Resume V2.pdf" class="btn-resume" target="_blank" rel="noopener noreferrer"
-              >Resume<svg
-                width="21"
-                height="21"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path class="arrow-st" d="M12 5v14m0 0-4-4m4 4 4-4" /></svg></a>
+            <a href="assets/ASWIN-SHAJU-FlowCV-Resume V2.pdf" class="btn-resume" target="_blank" rel="noopener noreferrer">
+              Resume
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path class="arrow-st" d="M12 5v14m0 0-4-4m4 4 4-4" />
+              </svg>
+            </a>
           </div>
         </div>
+
+        <!-- MOBILE HERO -->
         <div class="hero-mob">
           <div class="mob-photo">
             <div class="img-ph">
               <img src="assets/images/img_1_1.png" alt="Aswin Shaju" />
             </div>
-            <div class="mob-wave">
-              <svg width="83" height="83" viewBox="0 0 83 83" fill="none">
-                <g clip-path="url(#wh2)">
-                  <path
-                    d="M15.2812 48.2348C14.4968 56.2811 22.3121 63.3012 30.2869 62.5029C23.226 60.3702 17.6312 55.1782 15.2812 48.2348Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M30.2869 62.5029L30.0925 62.5203C30.1171 62.5192 30.1744 62.5114 30.2869 62.5029Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M64.4134 15.2927C63.2516 14.8625 61.9803 14.8272 60.7964 15.1921C53.6472 17.3883 55.2259 27.094 54.7562 31.2164C54.7562 31.2164 42.7111 18.1213 38.6058 13.8408C34.3722 9.42494 29.0914 12.2284 28.3209 15.5768C23.1728 12.7295 16.798 18.2631 19.2499 22.894C14.0667 24.0606 13.5544 29.6846 15.6623 32.5419C11.7112 33.6231 11.3687 39.0256 13.7567 42.0845C13.8806 42.2441 25.0302 53.7848 28.3325 57.869C29.5301 59.3924 32.2719 62.9279 36.0273 67.7696 42.5637 70.577 45.3777 71.7852 48.7757 71.8369 52.3929 70.7257C58.7682 68.7673 64.8949 63.4229 68.0016 57.1083C70.7844 51.4535 71.1098 45.4613 68.9429 39.7786C66.9958 34.6702 67.1454 29.2476 67.2649 24.8897C67.3941 20.1608 67.4952 16.4252 64.4134 15.2927Z"
-                    fill="white"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="wh2">
-                    <rect
-                      width="66.4145"
-                      height="66.4145"
-                      fill="white"
-                      transform="translate(0 19.5048) rotate(-17.0762)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
           </div>
           <div class="mob-names">
-            <span class="mob-name">ASWIN </span><span class="mob-name">SHAJU</span>
+            <span class="mob-name">ASWIN</span>
+            <span class="mob-name">SHAJU</span>
           </div>
+          <!-- ✅ FIXED: centred designation, no absolute positioning -->
           <div class="mob-desig">
             <span>UI/UX DESIGNER | GRAPHIC DESIGNER</span>
           </div>
           <div class="mob-desc">
             <p>
               Creating intuitive digital experiences focused on usability,
-              clarity, and modern interface design,
-           delivering impactful visual designs shaped by 3+ years of
-              experience in Graphic Designing and 1 year of experience in UI/UX Designing with diverse client needs.
+              clarity, and modern interface design, delivering impactful visual
+              designs shaped by 3+ years of experience in Graphic Designing and
+              1 year of experience in UI/UX Designing with diverse client needs.
             </p>
           </div>
           <div class="mob-btns">
             <a href="#projects" class="btn-view">View Projects</a>
-            <a href="#" class="btn-resume"
-              >Resume<svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path class="arrow-st" d="M12 5v14m0 0-4-4m4 4 4-4" /></svg></a>
+            <a href="assets/ASWIN-SHAJU-FlowCV-Resume V2.pdf" class="btn-resume" target="_blank" rel="noopener noreferrer">
+              Resume
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path class="arrow-st" d="M12 5v14m0 0-4-4m4 4 4-4" />
+              </svg>
+            </a>
           </div>
         </div>
+
         <div id="heroEnd" style="height: 1px"></div>
       </div>
 
@@ -2382,11 +2303,7 @@
       <section class="services-section" id="services">
         <div class="svc-wrap">
           <div class="svc-img-col reveal-l">
-            <img
-              src="assets/images/img_rectangle_8.png"
-              alt="Aswin at work"
-              class="svc-img"
-            />
+            <img src="assets/images/img_rectangle_8.png" alt="Aswin at work" class="svc-img" />
           </div>
           <div class="svc-content">
             <div class="svc-hdr reveal d1">
@@ -2403,14 +2320,7 @@
                 <div class="svc-row" onclick="toggleSvc(this)">
                   <h3 class="svc-name">1. UI/UX DESIGN</h3>
                   <div class="svc-chev">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </div>
@@ -2418,40 +2328,20 @@
                 <div class="svc-body">
                   <div class="svc-inner">
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Wireframing and Prototyping</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Wireframing and Prototyping</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >User Interface design for web and mobile apps</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">User Interface design for web and mobile apps</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Usability testing and user feedback analysis</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Usability testing and user feedback analysis</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Design collaboration with developers</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Design collaboration with developers</span>
                     </div>
                   </div>
                 </div>
@@ -2461,14 +2351,7 @@
                 <div class="svc-row" onclick="toggleSvc(this)">
                   <h3 class="svc-name">2. GRAPHIC DESIGN</h3>
                   <div class="svc-chev">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </div>
@@ -2476,40 +2359,20 @@
                 <div class="svc-body">
                   <div class="svc-inner">
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Social media creatives and thumbnails</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Social media creatives and thumbnails</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Digital posters and profile visuals</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Digital posters and profile visuals</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Banners and promotional graphics</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Banners and promotional graphics</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Client-focused custom visual design solutions</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Client-focused custom visual design solutions</span>
                     </div>
                   </div>
                 </div>
@@ -2519,14 +2382,7 @@
                 <div class="svc-row" onclick="toggleSvc(this)">
                   <h3 class="svc-name">3. WEB DESIGN</h3>
                   <div class="svc-chev">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </div>
@@ -2534,38 +2390,20 @@
                 <div class="svc-body">
                   <div class="svc-inner">
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt">Responsive website designs</span>
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Responsive website designs</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Clean structure using HTML and CSS</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Clean structure using HTML and CSS</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Design-to-web implementation for simple UI builds</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Design-to-web implementation for simple UI builds</span>
                     </div>
                     <div class="svc-feat">
-                      <img
-                        src="assets/images/img_lucide_circle_check_big.svg"
-                        class="chk"
-                        alt=""
-                      /><span class="feat-txt"
-                        >Landing page designs using modern principles</span
-                      >
+                      <img src="assets/images/img_lucide_circle_check_big.svg" class="chk" alt="" />
+                      <span class="feat-txt">Landing page designs using modern principles</span>
                     </div>
                   </div>
                 </div>
@@ -2588,59 +2426,28 @@
             </p>
             <div class="cinfo">
               <div>
-                <span class="email-lbl">Email:</span><br /><a
-                  href="mailto:aswincreates.dev@gmail.com"
-                  class="email-a"
-                  >aswincreates.dev@gmail.com</a
-                >
+                <span class="email-lbl">Email:</span><br />
+                <a href="mailto:aswincreates.dev@gmail.com" class="email-a">aswincreates.dev@gmail.com</a>
               </div>
               <div class="socials">
-                <a
-                  href="https://github.com/aswinshaju2004"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_github_1.svg"
-                    alt="GitHub"
-                    class="soc-ic"
-                /></a>
-                <a
-                  href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_instagram_1.svg"
-                    alt="Instagram"
-                    class="soc-ic"
-                /></a>
-                <a
-                  href="https://www.behance.net/aswinshaju2004"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_behance_1.svg"
-                    alt="Behance"
-                    class="soc-ic"
-                /></a>
-                <a
-                  href="https://pin.it/406qm2NFc"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_vector_deep_purple_a200.svg"
-                    alt="Pinterest"
-                    class="soc-ic"
-                /></a>
+                <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/img_github_1.svg" alt="GitHub" class="soc-ic" />
+                </a>
+                <a href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA==" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/img_instagram_1.svg" alt="Instagram" class="soc-ic" />
+                </a>
+                <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/img_behance_1.svg" alt="Behance" class="soc-ic" />
+                </a>
+                <a href="https://pin.it/406qm2NFc" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/images/img_vector_deep_purple_a200.svg" alt="Pinterest" class="soc-ic" />
+                </a>
               </div>
             </div>
             <a href="#story" class="btn-story">My Story</a>
           </div>
           <div class="about-img-col reveal-r">
-            <img
-              src="assets/images/img_rectangle_2.png"
-              alt="Aswin Shaju"
-              class="about-img"
-            />
+            <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="Aswin Shaju" class="about-img" />
           </div>
         </div>
       </section>
@@ -2687,46 +2494,18 @@
         <h2 class="tools-title reveal">TOOLS AND SKILLS</h2>
         <div class="tools-wrap">
           <p class="tools-sub reveal d1">
-            The tools I use to craft intuitive interfaces and compelling visual
-            experiences.
+            The tools I use to craft intuitive interfaces and compelling visual experiences.
           </p>
           <div class="tools-grid">
-            <div class="tool-item reveal d1">
-              <img src="assets/images/img_figma_1.png" alt="Figma" />
-            </div>
-            <div class="tool-item reveal d1">
-              <img
-                src="assets/images/img_adobe_photoshop.png"
-                alt="Photoshop"
-              />
-            </div>
-            <div class="tool-item reveal d2">
-              <img src="assets/images/img_html_1.png" alt="HTML" />
-            </div>
-            <div class="tool-item reveal d2">
-              <img src="assets/images/img_framer_1.png" alt="Framer" />
-            </div>
-            <div class="tool-item reveal d3">
-              <img
-                src="assets/images/img_adobe_illustrator.png"
-                alt="Illustrator"
-              />
-            </div>
-            <div class="tool-item reveal d3">
-              <img src="assets/images/img_css_1.png" alt="CSS" />
-            </div>
-            <div class="tool-item reveal d4">
-              <img src="assets/images/img_inkscape_1.png" alt="Inkscape" />
-            </div>
-            <div class="tool-item reveal d4">
-              <img
-                src="assets/images/img_adobe_lightroom.png"
-                alt="Lightroom"
-              />
-            </div>
-            <div class="tool-item reveal d4">
-              <img src="assets/images/img_gimp_1.png" alt="GIMP" />
-            </div>
+            <div class="tool-item reveal d1"><img src="assets/images/img_figma_1.png" alt="Figma" /></div>
+            <div class="tool-item reveal d1"><img src="assets/images/img_adobe_photoshop.png" alt="Photoshop" /></div>
+            <div class="tool-item reveal d2"><img src="assets/images/img_html_1.png" alt="HTML" /></div>
+            <div class="tool-item reveal d2"><img src="assets/images/img_framer_1.png" alt="Framer" /></div>
+            <div class="tool-item reveal d3"><img src="assets/images/img_adobe_illustrator.png" alt="Illustrator" /></div>
+            <div class="tool-item reveal d3"><img src="assets/images/img_css_1.png" alt="CSS" /></div>
+            <div class="tool-item reveal d4"><img src="assets/images/img_inkscape_1.png" alt="Inkscape" /></div>
+            <div class="tool-item reveal d4"><img src="assets/images/img_adobe_lightroom.png" alt="Lightroom" /></div>
+            <div class="tool-item reveal d4"><img src="assets/images/img_gimp_1.png" alt="GIMP" /></div>
           </div>
         </div>
       </section>
@@ -2735,40 +2514,24 @@
       <section class="contact-section" id="contact">
         <div class="contact-hdr reveal">
           <h2 class="contact-title">GET IN TOUCH</h2>
-          <p class="contact-sub">
-            Ready to bring your vision to life? Let's connect.
-          </p>
+          <p class="contact-sub">Ready to bring your vision to life? Let's connect.</p>
         </div>
         <form class="c-form reveal d1" onsubmit="handleForm(event)">
           <input type="text" class="c-input" placeholder="Full Name" required />
-          <input
-            type="email"
-            class="c-input"
-            placeholder="Email Address"
-            required
-          />
-          <textarea
-            class="c-textarea"
-            placeholder="Message"
-            required
-          ></textarea>
+          <input type="email" class="c-input" placeholder="Email Address" required />
+          <textarea class="c-textarea" placeholder="Message" required></textarea>
           <button type="submit" class="c-submit">Submit</button>
         </form>
       </section>
 
-      <!-- SCROLL TO TOP: in normal document flow, above footer, NO position:fixed -->
+      <!-- SCROLL TO TOP -->
       <div class="scroll-top-wrap" id="stWrap">
         <button
           class="scroll-top"
           onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
           aria-label="Back to top"
         >
-          <svg
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+          <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15" />
           </svg>
         </button>
@@ -2783,43 +2546,18 @@
               <p class="foot-tag">Designing intuitive digital experiences.</p>
             </div>
             <div class="foot-soc">
-              <!-- <a
-                  href="mailto:aswincreates.dev@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img src="assets/images/img_gmail.svg" alt="Email" /></a> -->
-              <a
-                  href="https://github.com/aswinshaju2004"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_github_1.svg"
-                    alt="GitHub"
-                /></a>
-                <a
-                  href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_instagram_1.svg"
-                    alt="Instagram"
-                /></a>
-                <a
-                  href="https://www.behance.net/aswinshaju2004"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_behance_1.svg"
-                    alt="Behance"
-                /></a>
-                <a
-                  href="https://pin.it/406qm2NFc"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  ><img
-                    src="assets/images/img_vector_deep_purple_a200.svg"
-                    alt="Pinterest"
-                /></a>
+              <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/img_github_1.svg" alt="GitHub" />
+              </a>
+              <a href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA==" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/img_instagram_1.svg" alt="Instagram" />
+              </a>
+              <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/img_behance_1.svg" alt="Behance" />
+              </a>
+              <a href="https://pin.it/406qm2NFc" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/img_vector_deep_purple_a200.svg" alt="Pinterest" />
+              </a>
             </div>
           </div>
           <p class="foot-copy">© 2026 Aswin Shaju. All rights reserved.</p>
@@ -2827,7 +2565,7 @@
       </footer>
     </main>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
       /* THEME */
       const html = document.documentElement;
       function applyTheme(t) {
@@ -2835,22 +2573,14 @@
         localStorage.setItem("theme", t);
       }
       applyTheme(localStorage.getItem("theme") || "dark");
-      document
-        .getElementById("themeTog")
-        .addEventListener("click", () =>
-          applyTheme(
-            html.getAttribute("data-theme") === "dark" ? "light" : "dark",
-          ),
-        );
-      document
-        .getElementById("mobThemeTog")
-        .addEventListener("click", () =>
-          applyTheme(
-            html.getAttribute("data-theme") === "dark" ? "light" : "dark",
-          ),
-        );
+      document.getElementById("themeTog").addEventListener("click", () =>
+        applyTheme(html.getAttribute("data-theme") === "dark" ? "light" : "dark")
+      );
+      document.getElementById("mobThemeTog").addEventListener("click", () =>
+        applyTheme(html.getAttribute("data-theme") === "dark" ? "light" : "dark")
+      );
 
-      // RESUME BUTTON(S)
+      /* RESUME BUTTONS */
       const resumePath = "assets/ASWIN-SHAJU-FlowCV-Resume V2.pdf";
       document.querySelectorAll("a.btn-resume").forEach(el => {
         el.setAttribute("href", resumePath);
@@ -2872,37 +2602,23 @@
       /* SCROLL */
       const sb = document.getElementById("sb");
       const stWrap = document.getElementById("stWrap");
-      window.addEventListener(
-        "scroll",
-        () => {
-          const pct =
-            (window.scrollY /
-              (document.documentElement.scrollHeight - window.innerHeight)) *
-            100;
-          sb.style.width = pct + "%";
-          stWrap.classList.toggle("vis", window.scrollY > 400);
-          revealAll();
-          const g = document.querySelector(".hero-glow");
-          if (g)
-            g.style.transform = `translate(-50%, calc(-50% + ${window.scrollY * 0.28}px))`;
-          syncNav();
-        },
-        { passive: true },
-      );
+      window.addEventListener("scroll", () => {
+        const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        sb.style.width = pct + "%";
+        stWrap.classList.toggle("vis", window.scrollY > 400);
+        revealAll();
+        const g = document.querySelector(".hero-glow");
+        if (g) g.style.transform = `translate(-50%, calc(-50% + ${window.scrollY * 0.28}px))`;
+        syncNav();
+      }, { passive: true });
 
       /* REVEAL */
       function revealAll() {
-        document
-          .querySelectorAll(".reveal,.reveal-l,.reveal-r")
-          .forEach((el) => {
-            if (el.getBoundingClientRect().top < window.innerHeight * 0.88)
-              el.classList.add("v");
-          });
+        document.querySelectorAll(".reveal,.reveal-l,.reveal-r").forEach(el => {
+          if (el.getBoundingClientRect().top < window.innerHeight * 0.88) el.classList.add("v");
+        });
       }
-      window.addEventListener("load", () => {
-        syncNav();
-        setTimeout(revealAll, 1200);
-      });
+      window.addEventListener("load", () => { syncNav(); setTimeout(revealAll, 1200); });
       setTimeout(revealAll, 1200);
 
       /* ACCORDION */
@@ -2915,7 +2631,7 @@
       }
 
       /* SMOOTH LINKS */
-      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener("click", function (e) {
           const h = this.getAttribute("href");
           if (h === "#") return;
@@ -2931,11 +2647,7 @@
         const btn = e.target.querySelector(".c-submit");
         const orig = btn.textContent;
         btn.textContent = "Sent Successfully ✓";
-        setTimeout(() => {
-          btn.textContent = orig;
-          btn.style.background = "";
-          e.target.reset();
-        }, 3000);
+        setTimeout(() => { btn.textContent = orig; e.target.reset(); }, 3000);
       }
 
       /* WAVE HOVER */
@@ -2956,18 +2668,13 @@
       /* HAMBURGER */
       const hbg = document.getElementById("hbg");
       const mobNav = document.getElementById("mobNav");
-      hbg.addEventListener("click", (e) => {
+      hbg.addEventListener("click", e => {
         e.stopPropagation();
         const o = mobNav.classList.toggle("open");
         hbg.classList.toggle("open", o);
       });
-      function closeMenu() {
-        mobNav.classList.remove("open");
-        hbg.classList.remove("open");
-      }
-      document.addEventListener("click", (e) => {
-        if (!navFull.contains(e.target)) closeMenu();
-      });
-    </script>
-  </body>
-</html>
+
+
+      </script>
+      </body>
+    </html>
