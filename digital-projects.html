@@ -72,10 +72,34 @@
       border: 1px solid rgba(128, 128, 128, .15);
       z-index: 1000;
     }
-    .nav a {
+
+    /* FIX 2: Home icon button */
+    .home-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--tog-bg);
+      border: 1px solid var(--tog-bdr);
       color: var(--text);
       text-decoration: none;
-      font-size: 14px;
+      transition: background 0.3s, transform 0.3s;
+      flex-shrink: 0;
+    }
+    .home-btn:hover {
+      background: var(--tog-hov);
+      transform: scale(1.1);
+    }
+    .home-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--text);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     /* THEME TOGGLE */
@@ -106,22 +130,10 @@
       display: block;
       transition: opacity 0.3s, transform 0.4s;
     }
-    [data-theme="dark"] .theme-tog .icon-moon {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
-    [data-theme="dark"] .theme-tog .icon-sun {
-      opacity: 0;
-      transform: rotate(90deg) scale(0.5);
-    }
-    [data-theme="light"] .theme-tog .icon-moon {
-      opacity: 0;
-      transform: rotate(-90deg) scale(0.5);
-    }
-    [data-theme="light"] .theme-tog .icon-sun {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
+    [data-theme="dark"] .theme-tog .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+    [data-theme="dark"] .theme-tog .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.5); }
+    [data-theme="light"] .theme-tog .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+    [data-theme="light"] .theme-tog .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
 
     .talk-btn {
       background: linear-gradient(135deg, var(--p-light), var(--p-dark));
@@ -163,7 +175,11 @@
       margin-bottom: 50px;
     }
 
-    /* ================= LOOP EFFECT ================= */
+    /* ================= FIX 4: TRUE SEAMLESS INFINITE LOOP ================= */
+    /*
+      The carousel uses JS to clone items so the loop never "jumps" back.
+      CSS animation is removed; JS handles requestAnimationFrame scrolling.
+    */
     .carousel {
       overflow: hidden;
       width: 100%;
@@ -173,10 +189,8 @@
       display: flex;
       gap: 30px;
       width: max-content;
-      animation: scrollLeft 30s linear infinite;
-    }
-    .track.reverse {
-      animation: scrollRight 30s linear infinite;
+      /* No CSS animation — JS drives this */
+      will-change: transform;
     }
     .track img {
       width: 300px;
@@ -184,31 +198,24 @@
       object-fit: cover;
       border-radius: 20px;
       flex-shrink: 0;
-      transition: .3s;
+      transition: transform .3s;
     }
-    .track img:hover {
-      transform: scale(1.05);
-    }
+    .track img:hover { transform: scale(1.05); }
+
+    /* FIX 1: Profile images perfectly round */
     .profile-img {
       width: 170px !important;
       height: 170px !important;
-      border-radius: 50%;
+      border-radius: 50% !important;
+      object-fit: cover;
     }
     .profile-wrapper {
       display: flex;
       flex-direction: column;
       gap: 40px;
     }
-    @keyframes scrollLeft {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    @keyframes scrollRight {
-      from { transform: translateX(-50%); }
-      to { transform: translateX(0); }
-    }
 
-    /* ================= STATS ================= */
+    /* ================= FIX 3: STATS — stack on mobile ================= */
     .stats {
       margin-top: 150px;
       display: flex;
@@ -218,7 +225,15 @@
       text-align: center;
     }
     .stats h3 { font-size: 48px; }
-    .stats p { color: var(--purple); margin-top: 8px; }
+    .stats p  { color: var(--purple); margin-top: 8px; }
+
+    @media (max-width: 600px) {
+      .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+      }
+    }
 
     /* ================= CONTACT ================= */
     .contact-section {
@@ -247,13 +262,8 @@
       text-align: center;
       line-height: 1.75;
     }
-    .c-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .c-input,
-    .c-textarea {
+    .c-form { display: flex; flex-direction: column; gap: 12px; }
+    .c-input, .c-textarea {
       width: 100%;
       padding: 18px 22px;
       background: var(--form-bg);
@@ -265,17 +275,12 @@
       outline: none;
       transition: all 0.3s;
     }
-    .c-input:focus,
-    .c-textarea:focus {
+    .c-input:focus, .c-textarea:focus {
       border-color: rgba(139, 92, 246, 0.45);
       box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
     }
-    .c-textarea {
-      height: 180px;
-      resize: vertical;
-    }
-    .c-input::placeholder,
-    .c-textarea::placeholder {
+    .c-textarea { height: 180px; resize: vertical; }
+    .c-input::placeholder, .c-textarea::placeholder {
       color: rgba(237, 237, 249, 0.55);
       font-family: "Poppins", sans-serif;
     }
@@ -309,41 +314,19 @@
       display: flex;
       justify-content: flex-end;
       padding: 48px 48px 0;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
-      pointer-events: none; /* so it doesn't block clicks when hidden */
-    }
-    .scroll-top-wrap.vis {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
     }
     .scroll-top {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       background: linear-gradient(135deg, var(--purple), var(--p-dark));
-      border: none;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: none; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       box-shadow: 0 8px 25px rgba(139, 92, 246, 0.38);
       transition: all 0.35s var(--ease);
       flex-shrink: 0;
     }
-    .scroll-top:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 35px rgba(139, 92, 246, 0.55);
-    }
-    .scroll-top svg {
-      width: 22px;
-      height: 22px;
-      stroke: #fff;
-      fill: none;
-      display: block;
-    }
+    .scroll-top:hover { transform: translateY(-4px); box-shadow: 0 14px 35px rgba(139, 92, 246, 0.55); }
+    .scroll-top svg { width: 22px; height: 22px; stroke: #fff; fill: none; display: block; }
 
     /* ================= FOOTER ================= */
     .footer {
@@ -362,16 +345,8 @@
       gap: 44px;
       position: relative;
     }
-    .foot-left {
-      display: flex;
-      align-items: center;
-      gap: 56px;
-    }
-    .foot-info {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .foot-left { display: flex; align-items: center; gap: 56px; }
+    .foot-info { display: flex; flex-direction: column; gap: 14px; }
     .foot-name {
       font-size: 46px;
       font-family: "Antonio", sans-serif;
@@ -379,87 +354,32 @@
       text-align: left;
       color: #121212;
     }
-    [data-theme="light"] .foot-name {
-      color: #f0f0f0;
-    }
-    .foot-tag {
-      font-size: 19px;
-      font-family: "Poppins", sans-serif;
-      color: #121212;
-      line-height: 1.75;
-    }
-    [data-theme="light"] .foot-tag {
-      color: #f0f0f0;
-    }
-    .foot-soc {
-      display: flex;
-      gap: 30px;
-    }
+    [data-theme="light"] .foot-name { color: #f0f0f0; }
+    .foot-tag { font-size: 19px; font-family: "Poppins", sans-serif; color: #121212; line-height: 1.75; }
+    [data-theme="light"] .foot-tag { color: #f0f0f0; }
+    .foot-soc { display: flex; gap: 30px; }
     @media (min-width: 769px) {
-      .foot-soc {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+      .foot-soc { position: absolute; left: 50%; transform: translateX(-50%); }
     }
     .foot-soc img {
-      width: 28px;
-      height: 28px;
-      cursor: pointer;
+      width: 28px; height: 28px; cursor: pointer;
       filter: brightness(0);
       transition: transform 0.3s var(--ease);
     }
-    [data-theme="light"] .foot-soc img {
-      filter: brightness(0) invert(1) brightness(1.8);
-    }
-    .foot-soc img:hover {
-      transform: translateY(-4px) scale(1.1);
-    }
-    .foot-copy {
-      font-size: 17px;
-      font-family: "Poppins", sans-serif;
-      color: #121212;
-      text-align: right;
-    }
-    [data-theme="light"] .foot-copy {
-      color: #f0f0f0;
-    }
+    [data-theme="light"] .foot-soc img { filter: brightness(0) invert(1) brightness(1.8); }
+    .foot-soc img:hover { transform: translateY(-4px) scale(1.1); }
+    .foot-copy { font-size: 17px; font-family: "Poppins", sans-serif; color: #121212; text-align: right; }
+    [data-theme="light"] .foot-copy { color: #f0f0f0; }
 
     /* ================= RESPONSIVE ================= */
     @media (max-width: 768px) {
       .nav a { font-size: 13px; }
-      /* .talk-btn { display: none; } simplified for demo */
-      .theme-tog { display: flex; } /* ensure toggle visible */
-      .scroll-top-wrap {
-        padding: 32px 16px 0;
-        justify-content: center;
-      }
-      .scroll-top {
-        width: 46px;
-        height: 46px;
-      }
-      .scroll-top svg {
-        width: 20px;
-        height: 20px;
-      }
-      .footer {
-        padding: 36px 20px 32px;
-        margin-top: 32px;
-      }
-      .foot-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      .foot-left {
-        flex-direction: column;
-        gap: 14px;
-        width: 100%;
-      }
-      .foot-name {
-        text-align: center;
-        font-size: 32px;
-      }
+      .theme-tog { display: flex; }
+      .scroll-top-wrap { padding: 32px 16px 0; justify-content: center; }
+      .footer { padding: 36px 20px 32px; margin-top: 32px; }
+      .foot-wrap { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .foot-left { flex-direction: column; gap: 14px; width: 100%; }
+      .foot-name { text-align: center; font-size: 32px; }
       .foot-tag { font-size: 14px; }
       .foot-soc { gap: 18px; flex-wrap: wrap; }
       .foot-soc img { width: 22px; height: 22px; }
@@ -476,7 +396,12 @@
 <body>
 
 <div class="nav">
-  <a href="index.html">← Back to Home</a>
+  <!-- FIX 2: Home icon instead of text link -->
+  <a href="index.html" class="home-btn" aria-label="Back to Home">
+    <svg viewBox="0 0 24 24">
+      <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H15v-5h-6v5H4a1 1 0 0 1-1-1V9.5z"/>
+    </svg>
+  </a>
   <div style="display:flex; gap:10px; align-items:center;">
     <button class="theme-tog" id="themeTog" aria-label="Toggle theme">
       <svg class="icon-moon" viewBox="0 0 40 40" fill="none">
@@ -508,13 +433,12 @@
 <!-- POSTERS -->
 <section class="section">
   <h2>POSTERS</h2>
-  <div class="carousel">
-    <div class="track">
+  <div class="carousel" data-speed="0.6">
+    <div class="track" id="track-posters">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
-      <!-- Duplicate -->
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="poster">
@@ -526,13 +450,12 @@
 <!-- THUMBNAILS -->
 <section class="section">
   <h2>THUMBNAILS</h2>
-  <div class="carousel">
-    <div class="track reverse">
+  <div class="carousel" data-speed="-0.6">
+    <div class="track" id="track-thumbnails">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
-      <!-- Duplicate -->
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
       <img src="assets/images/img_rectangle_8.jpg.jpeg" alt="thumbnail">
@@ -545,26 +468,24 @@
 <section class="section">
   <h2>PROFILE PICTURES</h2>
   <div class="profile-wrapper">
-    <div class="carousel">
-      <div class="track">
+    <div class="carousel" data-speed="0.5">
+      <div class="track" id="track-profile1">
         <img src="assets/images/img_rectangle_2.png" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
-        <!-- Duplicate -->
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
       </div>
     </div>
-    <div class="carousel">
-      <div class="track reverse">
+    <div class="carousel" data-speed="-0.5">
+      <div class="track" id="track-profile2">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
-        <!-- Duplicate -->
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
         <img src="assets/images/img_rectangle_8.jpg.jpeg" class="profile-img" alt="profile">
@@ -595,7 +516,7 @@
   </form>
 </section>
 
-<!-- SCROLL TO TOP (fixed visibility) -->
+<!-- SCROLL TO TOP -->
 <div class="scroll-top-wrap" id="stWrap">
   <button class="scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" aria-label="Back to top">
     <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -632,7 +553,7 @@
 </footer>
 
 <script>
-  // ========== THEME TOGGLE (fixed duplicate & missing element) ==========
+  /* ========== THEME TOGGLE ========== */
   const htmlEl = document.documentElement;
   const themeBtn = document.getElementById('themeTog');
 
@@ -641,46 +562,83 @@
     localStorage.setItem('theme', theme);
   }
 
-  // initial theme
   const savedTheme = localStorage.getItem('theme') || 'dark';
   applyTheme(savedTheme);
 
   themeBtn.addEventListener('click', () => {
-    const current = htmlEl.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
+    const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     applyTheme(next);
   });
 
-  // ========== SCROLL TOP VISIBILITY ==========
-  const stWrap = document.getElementById('stWrap');
 
-  window.addEventListener('scroll', () => {
-    // show button after scrolling down 400px
-    if (window.scrollY > 400) {
-      stWrap.classList.add('vis');
-    } else {
-      stWrap.classList.remove('vis');
+
+  /* ========== FIX 4: TRUE SEAMLESS INFINITE CAROUSEL ========== */
+  /*
+    Strategy: clone all items once. Total track = original + clones.
+    Move translateX by speed px/frame. When offset reaches the width of
+    the ORIGINAL set, silently reset to 0 — visually identical because
+    clones mirror the originals. Result: perfectly gapless, no jump.
+  */
+  function initCarousel(carousel) {
+    const track   = carousel.querySelector('.track');
+    const speed   = parseFloat(carousel.dataset.speed) || 0.6; // px/frame, negative = reverse
+    const GAP     = 30; // must match CSS gap
+
+    // Wait for images to load so we can measure correctly
+    function setup() {
+      const originalItems = Array.from(track.children);
+      const count = originalItems.length;
+
+      // Clone all original items and append
+      originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+      });
+
+      // Width of ONE full set (originals only) including gaps
+      const firstItem     = track.children[0];
+      const itemWidth     = firstItem.offsetWidth;
+      const singleSetWidth = count * (itemWidth + GAP);
+
+      let offset = speed < 0 ? -singleSetWidth : 0;
+
+      function tick() {
+        offset -= speed; // subtract: positive speed scrolls left, negative scrolls right
+
+        // Forward scroll: reset when we've scrolled one full set to the left
+        if (speed > 0 && offset <= -singleSetWidth) {
+          offset += singleSetWidth;
+        }
+        // Reverse scroll: reset when we've scrolled one full set to the right
+        if (speed < 0 && offset >= 0) {
+          offset -= singleSetWidth;
+        }
+
+        track.style.transform = `translateX(${offset}px)`;
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
     }
-  });
 
-  // trigger once on load to set correct initial state
-  window.dispatchEvent(new Event('scroll'));
+    // Ensure layout is ready before measuring
+    if (document.readyState === 'complete') {
+      setup();
+    } else {
+      window.addEventListener('load', setup);
+    }
+  }
 
-  // ========== FORM SUBMISSION ==========
+  document.querySelectorAll('.carousel').forEach(initCarousel);
+
+  /* ========== FORM SUBMISSION ========== */
   function handleForm(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.c-submit');
     const orig = btn.textContent;
     btn.textContent = 'Sent Successfully ✓';
-    setTimeout(() => {
-      btn.textContent = orig;
-      e.target.reset();
-    }, 3000);
+    setTimeout(() => { btn.textContent = orig; e.target.reset(); }, 3000);
   }
-
-  // (Optional) remove any conflicting old code that might override theme
-  // The previous snippet had a `toggle.onclick` that would error – it's now gone.
 </script>
-
 </body>
 </html>
