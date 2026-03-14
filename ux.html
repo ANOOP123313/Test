@@ -1,227 +1,1050 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI/UX Projects — Aswin Shaju</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
-    :root { --purple:#8b5cf6; --p-light:#763cfa; --p-dark:#763cfa; --ease:cubic-bezier(0.16,1,0.3,1); }
-    [data-theme="dark"]  { --bg:#121212; --text:#fdfbf7; --muted:#94a3b8; --nav-bg:rgba(18,18,30,0.82); --form-bg:rgba(90,90,100,0.35); --form-bdr:rgba(255,255,255,0.06); --tog-bg:rgba(255,255,255,0.07); --tog-bdr:rgba(255,255,255,0.14); --tog-hov:rgba(255,255,255,0.16); --card-bg:rgba(255,255,255,0.04); --card-bdr:rgba(255,255,255,0.08); }
-    [data-theme="light"] { --bg:#f2f0ec; --text:#0f0f14; --muted:#52525b; --nav-bg:rgba(238,236,232,0.9); --form-bg:rgba(0,0,0,0.07); --form-bdr:rgba(0,0,0,0.1); --tog-bg:rgba(0,0,0,0.06); --tog-bdr:rgba(0,0,0,0.14); --tog-hov:rgba(0,0,0,0.28); --card-bg:rgba(0,0,0,0.03); --card-bdr:rgba(0,0,0,0.08); }
-    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-    img { display:block; max-width:100%; }
-    body { font-family:"Poppins",sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; transition:background .3s,color .3s; line-height:1.5; }
-    body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:0.35; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); }
-    ::-webkit-scrollbar { width:5px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--purple); border-radius:3px; }
+    :root {
+      --purple: #8b5cf6;
+      --p-light: #763cfa;
+      --p-dark: #763cfa;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #fdfbf7;
+      --muted: #94a3b8;
+      --nav-bg: rgba(18, 18, 30, 0.82);
+      --form-bg: rgba(90, 90, 100, 0.35);
+      --form-bdr: rgba(255, 255, 255, 0.06);
+      --tog-bg: rgba(255, 255, 255, 0.07);
+      --tog-bdr: rgba(255, 255, 255, 0.14);
+      --tog-hov: rgba(255, 255, 255, 0.16);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-bdr: rgba(255, 255, 255, 0.08);
+    }
+
+    [data-theme="light"] {
+      --bg: #f2f0ec;
+      --text: #0f0f14;
+      --muted: #52525b;
+      --nav-bg: rgba(238, 236, 232, 0.9);
+      --form-bg: rgba(0, 0, 0, 0.07);
+      --form-bdr: rgba(0, 0, 0, 0.1);
+      --tog-bg: rgba(0, 0, 0, 0.06);
+      --tog-bdr: rgba(0, 0, 0, 0.14);
+      --tog-hov: rgba(0, 0, 0, 0.28);
+      --card-bg: rgba(0, 0, 0, 0.03);
+      --card-bdr: rgba(0, 0, 0, 0.08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--purple);
+      border-radius: 3px;
+    }
 
     /* NAV */
-    .nav { position:fixed; top:20px; left:50%; transform:translateX(-50%); width:92%; max-width:880px; display:flex; justify-content:space-between; align-items:center; padding:8px 18px; border-radius:100px; backdrop-filter:blur(24px); background:var(--nav-bg); border:1px solid rgba(128,128,128,.15); z-index:1000; box-shadow:0 8px 32px rgba(0,0,0,.2); }
-    .home-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--tog-bg); border:1px solid var(--tog-bdr); color:var(--text); text-decoration:none; transition:background .3s,transform .3s; flex-shrink:0; }
-    .home-btn:hover { background:var(--tog-hov); transform:scale(1.1); }
-    .home-btn svg { width:18px; height:18px; fill:none; stroke:var(--text); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-    .theme-tog { width:34px; height:34px; border-radius:50%; background:var(--tog-bg); border:1px solid var(--tog-bdr); cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .3s,transform .3s; position:relative; overflow:hidden; }
-    .theme-tog:hover { background:var(--tog-hov); transform:rotate(18deg); }
-    .theme-tog .icon-moon,.theme-tog .icon-sun { position:absolute; width:19px; height:19px; display:block; transition:opacity .3s,transform .4s; }
-    [data-theme="dark"]  .theme-tog .icon-moon { opacity:1; transform:rotate(0deg) scale(1); }
-    [data-theme="dark"]  .theme-tog .icon-sun  { opacity:0; transform:rotate(90deg) scale(.5); }
-    [data-theme="light"] .theme-tog .icon-moon { opacity:0; transform:rotate(-90deg) scale(.5); }
-    [data-theme="light"] .theme-tog .icon-sun  { opacity:1; transform:rotate(0deg) scale(1); }
-    .talk-btn { background:linear-gradient(135deg,var(--p-light),var(--p-dark)); border:none; padding:8px 18px; border-radius:40px; color:#fff; cursor:pointer; font-family:"Poppins",sans-serif; font-size:14px; font-weight:500; transition:all .3s var(--ease); box-shadow:0 4px 15px rgba(139,92,246,.28); }
-    .talk-btn:hover { transform:translateY(-1px); box-shadow:0 8px 25px rgba(139,92,246,.5); }
+    .nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92%;
+      max-width: 880px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 18px;
+      border-radius: 100px;
+      backdrop-filter: blur(24px);
+      background: var(--nav-bg);
+      border: 1px solid rgba(128, 128, 128, .15);
+      z-index: 1000;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .2);
+    }
+
+    .home-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--tog-bg);
+      border: 1px solid var(--tog-bdr);
+      color: var(--text);
+      text-decoration: none;
+      transition: background .3s, transform .3s;
+      flex-shrink: 0;
+    }
+
+    .home-btn:hover {
+      background: var(--tog-hov);
+      transform: scale(1.1);
+    }
+
+    .home-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--text);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .theme-tog {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--tog-bg);
+      border: 1px solid var(--tog-bdr);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s, transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-tog:hover {
+      background: var(--tog-hov);
+      transform: rotate(18deg);
+    }
+
+    .theme-tog .icon-moon,
+    .theme-tog .icon-sun {
+      position: absolute;
+      width: 19px;
+      height: 19px;
+      display: block;
+      transition: opacity .3s, transform .4s;
+    }
+
+    [data-theme="dark"] .theme-tog .icon-moon {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    [data-theme="dark"] .theme-tog .icon-sun {
+      opacity: 0;
+      transform: rotate(90deg) scale(.5);
+    }
+
+    [data-theme="light"] .theme-tog .icon-moon {
+      opacity: 0;
+      transform: rotate(-90deg) scale(.5);
+    }
+
+    [data-theme="light"] .theme-tog .icon-sun {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    .talk-btn {
+      background: linear-gradient(135deg, var(--p-light), var(--p-dark));
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all .3s var(--ease);
+      box-shadow: 0 4px 15px rgba(139, 92, 246, .28);
+    }
+
+    .talk-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, .5);
+    }
 
     /* HERO */
-    .hero { padding-top:150px; text-align:center; padding-inline:20px; padding-bottom:10px; }
-    .hero h1 { font-family:"Antonio"; font-size:clamp(42px,6vw,72px); letter-spacing:2px; color:var(--purple); }
-    .hero p { margin-top:15px; color:var(--muted); max-width:700px; margin:15px auto 0; font-size:clamp(14px,1.8vw,17px); line-height:1.7; }
-    .hero-actions { margin-top:32px; display:flex; justify-content:center; }
-    .behance-btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; width:fit-content; padding:15px 52px; background:rgba(235,235,235,0.92); color:#111; font-size:18px; font-family:"Poppins",sans-serif; font-weight:400; border:none; border-radius:60px; cursor:pointer; text-decoration:none; transition:all 0.4s var(--ease); position:relative; }
-    .behance-btn:hover { background:rgba(255,255,255,0.98); transform:translateY(-2px); box-shadow:0 0 44px 16px rgba(220,220,220,0.3),0 0 88px 32px rgba(200,200,200,0.15); }
-    [data-theme="light"] .behance-btn { background:rgba(15,15,20,0.88); color:#fff; box-shadow:0 0 18px 5px rgba(0,0,0,0.1); }
-    [data-theme="light"] .behance-btn:hover { background:#000; box-shadow:0 0 44px 16px rgba(0,0,0,0.22); }
+    .hero {
+      padding-top: 150px;
+      text-align: center;
+      padding-inline: 20px;
+      padding-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: "Antonio";
+      font-size: clamp(42px, 6vw, 72px);
+      letter-spacing: 2px;
+      color: var(--purple);
+    }
+
+    .hero p {
+      margin-top: 15px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 15px auto 0;
+      font-size: clamp(14px, 1.8vw, 17px);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .behance-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: fit-content;
+      padding: 15px 52px;
+      background: rgba(235, 235, 235, 0.92);
+      color: #111;
+      font-size: 18px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s var(--ease);
+      position: relative;
+    }
+
+    .behance-btn:hover {
+      background: rgba(255, 255, 255, 0.98);
+      transform: translateY(-2px);
+      box-shadow: 0 0 44px 16px rgba(220, 220, 220, 0.3), 0 0 88px 32px rgba(200, 200, 200, 0.15);
+    }
+
+    [data-theme="light"] .behance-btn {
+      background: rgba(15, 15, 20, 0.88);
+      color: #fff;
+      box-shadow: 0 0 18px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="light"] .behance-btn:hover {
+      background: #000;
+      box-shadow: 0 0 44px 16px rgba(0, 0, 0, 0.22);
+    }
 
     /* STATS */
-    .stats { margin-top:100px; display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(40px,6vw,150px); text-align:center; padding:0 20px; }
-    .stats h3 { font-family:"Antonio",sans-serif; font-size:48px; color:var(--text); }
-    .stats p { color:var(--purple); margin-top:8px; font-size:15px; }
-    @media(max-width:600px){ .stats{flex-direction:column;align-items:center;gap:36px;} }
+    .stats {
+      margin-top: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(40px, 6vw, 150px);
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .stats h3 {
+      font-family: "Antonio", sans-serif;
+      font-size: 48px;
+      color: var(--text);
+    }
+
+    .stats p {
+      color: var(--purple);
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    @media(max-width:600px) {
+      .stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+      }
+    }
 
     /* SECTIONS */
-    .section { margin-top:100px; padding:0 clamp(16px,4vw,60px); }
-    .section h2 { font-family:"Antonio",sans-serif; font-size:clamp(26px,4vw,40px); text-align:center; margin-bottom:50px; letter-spacing:1px; }
+    .section {
+      margin-top: 100px;
+      padding: 0 clamp(16px, 4vw, 60px);
+    }
+
+    .section h2 {
+      font-family: "Antonio", sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      text-align: center;
+      margin-bottom: 50px;
+      letter-spacing: 1px;
+    }
 
     /* FILTERS */
-    .filters { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:48px; }
-    .filter-btn { padding:7px 20px; border-radius:100px; font-family:"Poppins",sans-serif; font-size:13px; background:var(--card-bg); color:var(--muted); border:1px solid var(--card-bdr); cursor:pointer; transition:all .25s var(--ease); }
-    .filter-btn:hover,.filter-btn.active { background:var(--p-light); color:#fff; border-color:transparent; box-shadow:0 4px 16px rgba(118,60,250,.35); }
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .filter-btn {
+      padding: 7px 20px;
+      border-radius: 100px;
+      font-family: "Poppins", sans-serif;
+      font-size: 13px;
+      background: var(--card-bg);
+      color: var(--muted);
+      border: 1px solid var(--card-bdr);
+      cursor: pointer;
+      transition: all .25s var(--ease);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--p-light);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(118, 60, 250, .35);
+    }
 
     /* GRID */
-    .proj-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; max-width:1200px; margin:0 auto; }
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     /* CARD */
-    .proj-card { background:var(--card-bg); border:1px solid var(--card-bdr); border-radius:24px; overflow:hidden; cursor:pointer; text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .3s; }
-    .proj-card:hover { transform:translateY(-6px); border-color:rgba(139,92,246,.4); box-shadow:0 24px 60px rgba(0,0,0,.22),0 0 0 1px rgba(139,92,246,.1); }
-    .card-img { width:100%; aspect-ratio:16/9; overflow:hidden; position:relative; }
-    .card-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
-    .proj-card:hover .card-img img { transform:scale(1.04); }
-    .card-img-ph { width:100%; height:100%; background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(118,60,250,.06)); display:flex; align-items:center; justify-content:center; font-family:"Antonio",sans-serif; font-size:38px; letter-spacing:2px; color:rgba(139,92,246,.35); }
-    .card-badge { position:absolute; top:14px; left:14px; padding:4px 13px; border-radius:100px; font-size:11px; font-family:"Poppins",sans-serif; font-weight:500; backdrop-filter:blur(8px); }
-    .badge-new { background:rgba(139,92,246,.85); color:#fff; }
-    .badge-feat { background:rgba(16,16,32,.75); color:#c4b5fd; border:1px solid rgba(139,92,246,.3); }
-    .card-arrow { position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%; background:rgba(118,60,250,.9); display:flex; align-items:center; justify-content:center; opacity:0; transform:scale(.7) rotate(-45deg); transition:opacity .3s var(--ease),transform .3s var(--ease); }
-    .proj-card:hover .card-arrow { opacity:1; transform:scale(1) rotate(0deg); }
-    .card-arrow svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
-    .card-body { padding:22px 24px 24px; flex:1; display:flex; flex-direction:column; gap:10px; }
-    .card-tags { display:flex; gap:7px; flex-wrap:wrap; }
-    .card-tag { padding:3px 11px; border-radius:100px; font-size:11px; font-family:"Poppins",sans-serif; background:rgba(139,92,246,.12); color:#c4b5fd; border:1px solid rgba(139,92,246,.15); }
-    [data-theme="light"] .card-tag { background:rgba(118,60,250,.08); color:#5b21b6; }
-    .card-title { font-family:"Antonio",sans-serif; font-size:clamp(18px,2.2vw,22px); color:var(--text); line-height:1.2; letter-spacing:.4px; }
-    .card-desc { font-size:13.5px; color:var(--muted); line-height:1.65; flex:1; }
-    .card-footer { display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:14px; border-top:1px solid rgba(128,128,128,.1); }
-    .card-year { font-size:12px; color:var(--muted); opacity:.65; }
-    .card-cta { font-size:12px; color:var(--p-light); font-weight:500; display:flex; align-items:center; gap:5px; transition:gap .25s var(--ease); }
-    .proj-card:hover .card-cta { gap:9px; }
-    .card-cta svg { width:12px; height:12px; stroke:var(--p-light); fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+    .proj-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-bdr);
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139, 92, 246, .4);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .22), 0 0 0 1px rgba(139, 92, 246, .1);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s var(--ease);
+    }
+
+    .proj-card:hover .card-img img {
+      transform: scale(1.04);
+    }
+
+    .card-img-ph {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(139, 92, 246, .2), rgba(118, 60, 250, .06));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Antonio", sans-serif;
+      font-size: 38px;
+      letter-spacing: 2px;
+      color: rgba(139, 92, 246, .35);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 13px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-new {
+      background: rgba(139, 92, 246, .85);
+      color: #fff;
+    }
+
+    .badge-feat {
+      background: rgba(16, 16, 32, .75);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, .3);
+    }
+
+    .card-arrow {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(118, 60, 250, .9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(.7) rotate(-45deg);
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+
+    .proj-card:hover .card-arrow {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    .card-arrow svg {
+      width: 15px;
+      height: 15px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card-body {
+      padding: 22px 24px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .card-tag {
+      padding: 3px 11px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-family: "Poppins", sans-serif;
+      background: rgba(139, 92, 246, .12);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, .15);
+    }
+
+    [data-theme="light"] .card-tag {
+      background: rgba(118, 60, 250, .08);
+      color: #5b21b6;
+    }
+
+    .card-title {
+      font-family: "Antonio", sans-serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: .4px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(128, 128, 128, .1);
+    }
+
+    .card-year {
+      font-size: 12px;
+      color: var(--muted);
+      opacity: .65;
+    }
+
+    .card-cta {
+      font-size: 12px;
+      color: var(--p-light);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap .25s var(--ease);
+    }
+
+    .proj-card:hover .card-cta {
+      gap: 9px;
+    }
+
+    .card-cta svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--p-light);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
     /* WIDE CARD */
-    .proj-card.wide { grid-column:1/-1; flex-direction:row; min-height:260px; }
-    .proj-card.wide .card-img { width:45%; flex-shrink:0; aspect-ratio:unset; }
-    .proj-card.wide .card-body { justify-content:center; }
-    .proj-card.wide .card-title { font-size:clamp(20px,3vw,30px); }
+    .proj-card.wide {
+      grid-column: 1/-1;
+      flex-direction: row;
+      min-height: 260px;
+    }
+
+    .proj-card.wide .card-img {
+      width: 45%;
+      flex-shrink: 0;
+      aspect-ratio: unset;
+    }
+
+    .proj-card.wide .card-body {
+      justify-content: center;
+    }
+
+    .proj-card.wide .card-title {
+      font-size: clamp(20px, 3vw, 30px);
+    }
 
     /* PROCESS */
-    .process-section { margin-top:120px; padding:0 clamp(16px,4vw,60px); }
-    .process-section h2 { font-family:"Antonio",sans-serif; font-size:clamp(26px,4vw,40px); text-align:center; margin-bottom:50px; letter-spacing:1px; }
-    .process-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:22px; max-width:1200px; margin:0 auto; }
-    .process-card { background:var(--card-bg); border:1px solid var(--card-bdr); border-radius:20px; padding:26px 22px; transition:transform .35s var(--ease),border-color .3s; }
-    .process-card:hover { transform:translateY(-4px); border-color:rgba(139,92,246,.3); }
-    .process-num { font-family:"Antonio",sans-serif; font-size:40px; line-height:1; color:rgba(139,92,246,.2); margin-bottom:12px; }
-    .process-name { font-family:"Antonio",sans-serif; font-size:19px; color:var(--text); margin-bottom:9px; letter-spacing:.4px; }
-    .process-desc { font-size:13px; color:var(--muted); line-height:1.65; }
+    .process-section {
+      margin-top: 120px;
+      padding: 0 clamp(16px, 4vw, 60px);
+    }
+
+    .process-section h2 {
+      font-family: "Antonio", sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      text-align: center;
+      margin-bottom: 50px;
+      letter-spacing: 1px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 22px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-bdr);
+      border-radius: 20px;
+      padding: 26px 22px;
+      transition: transform .35s var(--ease), border-color .3s;
+    }
+
+    .process-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(139, 92, 246, .3);
+    }
+
+    .process-num {
+      font-family: "Antonio", sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      color: rgba(139, 92, 246, .2);
+      margin-bottom: 12px;
+    }
+
+    .process-name {
+      font-family: "Antonio", sans-serif;
+      font-size: 19px;
+      color: var(--text);
+      margin-bottom: 9px;
+      letter-spacing: .4px;
+    }
+
+    .process-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
 
     /* CONTACT */
-    .contact-section { width:100%; max-width:580px; margin:120px auto 0; padding:0 24px; }
-    .contact-hdr { display:flex; flex-direction:column; gap:18px; align-items:center; margin-bottom:72px; }
-    .contact-title { font-size:48px; font-family:"Antonio",sans-serif; font-weight:700; color:var(--text); text-align:center; }
-    .contact-sub { font-size:19px; color:var(--muted); text-align:center; line-height:1.75; }
-    .c-form { display:flex; flex-direction:column; gap:12px; }
-    .c-input,.c-textarea { width:100%; padding:18px 22px; background:var(--form-bg); border:1px solid var(--form-bdr); border-radius:14px; color:var(--text); font-size:15px; font-family:"Poppins",sans-serif; outline:none; transition:all .3s; }
-    .c-input:focus,.c-textarea:focus { border-color:rgba(139,92,246,.45); box-shadow:0 0 0 3px rgba(139,92,246,.12); }
-    .c-textarea { height:180px; resize:vertical; }
-    .c-input::placeholder,.c-textarea::placeholder { color:rgba(237,237,249,.55); font-family:"Poppins",sans-serif; }
-    [data-theme="light"] .c-input::placeholder,[data-theme="light"] .c-textarea::placeholder { color:rgba(80,80,100,.45); }
-    .c-submit { background:linear-gradient(135deg,#7c3aed,#6d28d9); border:none; border-radius:40px; padding:17px; color:#fff; font-size:18px; font-family:"Poppins",sans-serif; font-weight:400; cursor:pointer; margin-top:4px; transition:all .35s var(--ease); box-shadow:0 6px 22px rgba(109,40,217,.4); }
-    .c-submit:hover { background:linear-gradient(135deg,#8b5cf6,#7c3aed); transform:translateY(-2px); box-shadow:0 14px 38px rgba(109,40,217,.55); }
+    .contact-section {
+      width: 100%;
+      max-width: 580px;
+      margin: 120px auto 0;
+      padding: 0 24px;
+    }
+
+    .contact-hdr {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+
+    .contact-title {
+      font-size: 48px;
+      font-family: "Antonio", sans-serif;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .contact-sub {
+      font-size: 19px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.75;
+    }
+
+    .c-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .c-input,
+    .c-textarea {
+      width: 100%;
+      padding: 18px 22px;
+      background: var(--form-bg);
+      border: 1px solid var(--form-bdr);
+      border-radius: 14px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: "Poppins", sans-serif;
+      outline: none;
+      transition: all .3s;
+    }
+
+    .c-input:focus,
+    .c-textarea:focus {
+      border-color: rgba(139, 92, 246, .45);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, .12);
+    }
+
+    .c-textarea {
+      height: 180px;
+      resize: vertical;
+    }
+
+    .c-input::placeholder,
+    .c-textarea::placeholder {
+      color: rgba(237, 237, 249, .55);
+      font-family: "Poppins", sans-serif;
+    }
+
+    [data-theme="light"] .c-input::placeholder,
+    [data-theme="light"] .c-textarea::placeholder {
+      color: rgba(80, 80, 100, .45);
+    }
+
+    .c-submit {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      border: none;
+      border-radius: 40px;
+      padding: 17px;
+      color: #fff;
+      font-size: 18px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: all .35s var(--ease);
+      box-shadow: 0 6px 22px rgba(109, 40, 217, .4);
+    }
+
+    .c-submit:hover {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 38px rgba(109, 40, 217, .55);
+    }
 
     /* SCROLL TOP */
-    .scroll-top-wrap { width:100%; display:flex; justify-content:flex-end; padding:48px 48px 0; }
-    .scroll-top { width:52px; height:52px; background:linear-gradient(135deg,var(--purple),var(--p-dark)); border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 8px 25px rgba(139,92,246,.38); transition:all .35s var(--ease); flex-shrink:0; }
-    .scroll-top:hover { transform:translateY(-4px); box-shadow:0 14px 35px rgba(139,92,246,.55); }
-    .scroll-top svg { width:22px; height:22px; stroke:#fff; fill:none; display:block; }
+    .scroll-top-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 48px 48px 0;
+    }
+
+    .scroll-top {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--purple), var(--p-dark));
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(139, 92, 246, .38);
+      transition: all .35s var(--ease);
+      flex-shrink: 0;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(139, 92, 246, .55);
+    }
+
+    .scroll-top svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      fill: none;
+      display: block;
+    }
 
     /* FOOTER */
-    .footer { width:100%; background:linear-gradient(180deg,var(--p-light) 0%,var(--p-dark) 100%); padding:52px; margin-top:48px; overflow:hidden; }
-    .foot-wrap { max-width:1188px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:44px; position:relative; }
-    .foot-left { display:flex; align-items:center; gap:56px; }
-    .foot-info { display:flex; flex-direction:column; gap:14px; }
-    .foot-name { font-size:46px; font-family:"Antonio",sans-serif; font-weight:700; text-align:left; color:#121212; }
-    [data-theme="light"] .foot-name { color:#f0f0f0; }
-    .foot-tag { font-size:19px; font-family:"Poppins",sans-serif; color:#121212; line-height:1.75; }
-    [data-theme="light"] .foot-tag { color:#f0f0f0; }
-    .foot-soc { display:flex; gap:30px; }
-    @media(min-width:769px){ .foot-soc{position:absolute;left:50%;transform:translateX(-50%);} }
-    .foot-soc img { width:28px; height:28px; cursor:pointer; filter:brightness(0); transition:transform .3s var(--ease); }
-    [data-theme="light"] .foot-soc img { filter:brightness(0) invert(1) brightness(1.8); }
-    .foot-soc img:hover { transform:translateY(-4px) scale(1.1); }
-    .foot-copy { font-size:17px; font-family:"Poppins",sans-serif; color:#121212; text-align:right; }
-    [data-theme="light"] .foot-copy { color:#f0f0f0; }
+    .footer {
+      width: 100%;
+      background: linear-gradient(180deg, var(--p-light) 0%, var(--p-dark) 100%);
+      padding: 52px;
+      margin-top: 48px;
+      overflow: hidden;
+    }
+
+    .foot-wrap {
+      max-width: 1188px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 44px;
+      position: relative;
+    }
+
+    .foot-left {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .foot-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .foot-name {
+      font-size: 46px;
+      font-family: "Antonio", sans-serif;
+      font-weight: 700;
+      text-align: left;
+      color: #121212;
+    }
+
+    [data-theme="light"] .foot-name {
+      color: #f0f0f0;
+    }
+
+    .foot-tag {
+      font-size: 19px;
+      font-family: "Poppins", sans-serif;
+      color: #121212;
+      line-height: 1.75;
+    }
+
+    [data-theme="light"] .foot-tag {
+      color: #f0f0f0;
+    }
+
+    .foot-soc {
+      display: flex;
+      gap: 30px;
+    }
+
+    @media(min-width:769px) {
+      .foot-soc {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .foot-soc img {
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      filter: brightness(0);
+      transition: transform .3s var(--ease);
+    }
+
+    [data-theme="light"] .foot-soc img {
+      filter: brightness(0) invert(1) brightness(1.8);
+    }
+
+    .foot-soc img:hover {
+      transform: translateY(-4px) scale(1.1);
+    }
+
+    .foot-copy {
+      font-size: 17px;
+      font-family: "Poppins", sans-serif;
+      color: #121212;
+      text-align: right;
+    }
+
+    [data-theme="light"] .foot-copy {
+      color: #f0f0f0;
+    }
 
     /* REVEAL */
-    .reveal,.reveal-l,.reveal-r { opacity:0; transition:opacity .8s var(--ease),transform .8s var(--ease); }
-    .reveal   { transform:translateY(48px); }
-    .reveal-l { transform:translateX(-48px); }
-    .reveal-r { transform:translateX(48px); }
-    .reveal.v,.reveal-l.v,.reveal-r.v { opacity:1; transform:translate(0); }
-    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+    .reveal,
+    .reveal-l,
+    .reveal-r {
+      opacity: 0;
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+
+    .reveal {
+      transform: translateY(48px);
+    }
+
+    .reveal-l {
+      transform: translateX(-48px);
+    }
+
+    .reveal-r {
+      transform: translateX(48px);
+    }
+
+    .reveal.v,
+    .reveal-l.v,
+    .reveal-r.v {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    .d1 {
+      transition-delay: .1s
+    }
+
+    .d2 {
+      transition-delay: .2s
+    }
+
+    .d3 {
+      transition-delay: .3s
+    }
+
+    .d4 {
+      transition-delay: .4s
+    }
 
     /* RESPONSIVE */
-    @media(max-width:768px){
-      .proj-card.wide{flex-direction:column;}
-      .proj-card.wide .card-img{width:100%;aspect-ratio:16/9;}
-      .scroll-top-wrap{padding:32px 16px 0;justify-content:center;}
-      .footer{padding:36px 20px 32px;margin-top:32px;}
-      .foot-wrap{flex-direction:column;align-items:flex-start;gap:10px;}
-      .foot-left{flex-direction:column;gap:14px;width:100%;}
-      .foot-name{text-align:center;font-size:32px;}
-      .foot-tag{font-size:14px;}
-      .foot-soc{gap:18px;flex-wrap:wrap;}
-      .foot-soc img{width:22px;height:22px;}
-      .foot-copy{font-size:13px;text-align:center;width:100%;}
-      .contact-section{padding:0 16px;margin-top:64px;}
-      .contact-title{font-size:34px;}
-      .contact-sub{font-size:15px;}
-      .contact-hdr{margin-bottom:48px;}
-      .process-section{margin-top:72px;}
+    @media(max-width:768px) {
+      .proj-card.wide {
+        flex-direction: column;
+      }
+
+      .proj-card.wide .card-img {
+        width: 100%;
+        aspect-ratio: 16/9;
+      }
+
+      .scroll-top-wrap {
+        padding: 32px 16px 0;
+        justify-content: center;
+      }
+
+      .footer {
+        padding: 36px 20px 32px;
+        margin-top: 32px;
+      }
+
+      .foot-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .foot-left {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .foot-name {
+        text-align: center;
+        font-size: 32px;
+      }
+
+      .foot-tag {
+        font-size: 14px;
+      }
+
+      .foot-soc {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .foot-soc img {
+        width: 22px;
+        height: 22px;
+      }
+
+      .foot-copy {
+        font-size: 13px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .contact-section {
+        padding: 0 16px;
+        margin-top: 64px;
+      }
+
+      .contact-title {
+        font-size: 34px;
+      }
+
+      .contact-sub {
+        font-size: 15px;
+      }
+
+      .contact-hdr {
+        margin-bottom: 48px;
+      }
+
+      .process-section {
+        margin-top: 72px;
+      }
     }
-    @media(max-width:480px){
-      .proj-grid{grid-template-columns:1fr;}
-      .scroll-top-wrap{padding:28px 16px 0;}
-      .footer{padding:28px 16px 24px;}
+
+    @media(max-width:480px) {
+      .proj-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scroll-top-wrap {
+        padding: 28px 16px 0;
+      }
+
+      .footer {
+        padding: 28px 16px 24px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<div class="nav">
-  <a href="index.html" class="home-btn" aria-label="Back to Home">
-    <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H15v-5h-6v5H4a1 1 0 0 1-1-1V9.5z"/></svg>
-  </a>
-  <div style="display:flex;gap:10px;align-items:center;">
-    <button class="theme-tog" id="themeTog" aria-label="Toggle theme">
-      <svg class="icon-moon" viewBox="0 0 40 40" fill="none">
-        <path d="M15.9026 0C11.7718 3.14114 9.1047 8.10773 9.1047 13.6975C9.1047 23.1956 16.8044 30.8953 26.3025 30.8953C31.8923 30.8953 36.8579 28.2273 39.999 24.0964C38.0165 33.1902 29.9208 40 20.2327 40C9.05847 40 0 30.9415 0 19.7673C0 10.0795 6.80916 1.98274 15.9026 0Z" fill="white"/>
+  <!-- NAV -->
+  <div class="nav">
+    <a href="index.html" class="home-btn" aria-label="Back to Home">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H15v-5h-6v5H4a1 1 0 0 1-1-1V9.5z" />
       </svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="5" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"/>
-        <line x1="12" y1="1"   x2="12" y2="4"   stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="12" y1="20"  x2="12" y2="23"  stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="1"  y1="12"  x2="4"  y2="12"  stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="20" y1="12"  x2="23" y2="12"  stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="4.22"  y1="4.22"  x2="6.34"  y2="6.34"  stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="19.78" y1="4.22"  x2="17.66" y2="6.34"  stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-        <line x1="6.34"  y1="17.66" x2="4.22"  y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-    <button class="talk-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero reveal">
-  <h1>UI/UX PROJECTS</h1>
-  <p>A curated gallery of user interface and experience design work — crafted over 1 year of UI/UX designing, focused on clarity, usability, and modern design principles.</p>
-  <div class="hero-actions">
-    <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer" class="behance-btn">
-      View on Behance
     </a>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="theme-tog" id="themeTog" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 40 40" fill="none">
+          <path
+            d="M15.9026 0C11.7718 3.14114 9.1047 8.10773 9.1047 13.6975C9.1047 23.1956 16.8044 30.8953 26.3025 30.8953C31.8923 30.8953 36.8579 28.2273 39.999 24.0964C38.0165 33.1902 29.9208 40 20.2327 40C9.05847 40 0 30.9415 0 19.7673C0 10.0795 6.80916 1.98274 15.9026 0Z"
+            fill="white" />
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="5" fill="#f59e0b" stroke="#f59e0b" stroke-width="1" />
+          <line x1="12" y1="1" x2="12" y2="4" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="12" y1="20" x2="12" y2="23" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="1" y1="12" x2="4" y2="12" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="20" y1="12" x2="23" y2="12" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="19.78" y1="4.22" x2="17.66" y2="6.34" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+          <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+      <button class="talk-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's
+        Talk</button>
+    </div>
   </div>
-</section>
 
-<!-- STATS -->
-<!-- <div class="stats reveal d1">
+  <!-- HERO -->
+  <section class="hero reveal">
+    <h1>UI/UX PROJECTS</h1>
+    <p>A curated gallery of user interface and experience design work — crafted over 1 year of UI/UX designing, focused
+      on clarity, usability, and modern design principles.</p>
+    <div class="hero-actions">
+      <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer" class="behance-btn">
+        View on Behance
+      </a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <!-- <div class="stats reveal d1">
   <div><h3>1+</h3><p>Year in UI/UX Design</p></div>
   <div><h3>12+</h3><p>Projects Designed</p></div>
   <div><h3>100%</h3><p>User-Centred Approach</p></div>
 </div> -->
 
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <h2 class="reveal">SELECTED PROJECTS</h2>
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <h2 class="reveal">SELECTED PROJECTS</h2>
 
-  <!-- <div class="filters reveal d1">
+    <!-- <div class="filters reveal d1">
     <button class="filter-btn active" onclick="filterCards(this,'all')">All</button>
     <button class="filter-btn" onclick="filterCards(this,'app')">App Design</button>
     <button class="filter-btn" onclick="filterCards(this,'web')">Web Design</button>
@@ -229,177 +1052,237 @@
     <button class="filter-btn" onclick="filterCards(this,'branding')">Branding</button>
   </div> -->
 
-  <div class="proj-grid">
+    <div class="proj-grid">
 
-    <!-- FEATURED WIDE -->
-    <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
-       class="proj-card wide reveal d1" data-cat="app">
-      <div class="card-img">
-        <img src="assets/images/img_01_free_macbook_pro_16_mockup_1.png" alt="FinTrack App UI">
-        <span class="card-badge badge-new">Featured</span>
-        <div class="card-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-      </div>
-      <div class="card-body">
-        <div class="card-tags"><span class="card-tag">App Design</span><span class="card-tag">Figma</span><span class="card-tag">Prototyping</span></div>
-        <h3 class="card-title">FinTrack — Personal Finance App</h3>
-        <p class="card-desc">A mobile-first budgeting and expense tracking application designed to give users complete clarity over their financial health. Focused on data visualisation, intuitive navigation and a calming visual hierarchy that reduces cognitive load.</p>
-        <div class="card-footer">
-          <span class="card-year">2024</span>
-          <span class="card-cta">View on Behance <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      <!-- FEATURED WIDE -->
+      <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
+        class="proj-card wide reveal d1" data-cat="app">
+        <div class="card-img">
+          <img src="assets/images/img_01_free_macbook_pro_16_mockup_1.png" alt="FinTrack App UI">
+          <span class="card-badge badge-new">Featured</span>
+          <div class="card-arrow"><svg viewBox="0 0 24 24">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg></div>
         </div>
-      </div>
-    </a>
-
-    <!-- CARD 2 -->
-    <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
-       class="proj-card reveal d2" data-cat="web">
-      <div class="card-img">
-        <img src="assets/images/img_free_istagram_post_mockup_psd_1.png" alt="Portfolio Redesign">
-        <!-- <span class="card-badge badge-feat">Case Study</span> -->
-        <div class="card-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-      </div>
-      <div class="card-body">
-        <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Framer</span></div>
-        <h3 class="card-title">Portfolio Website Redesign</h3>
-        <p class="card-desc">Full redesign of a creative agency's portfolio — cleaner layout, improved content hierarchy and a dark-mode aesthetic that lets the work speak louder.</p>
-        <div class="card-footer">
-          <span class="card-year">2024</span>
-          <span class="card-cta">View on Behance <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <div class="card-body">
+          <div class="card-tags"><span class="card-tag">App Design</span><span class="card-tag">Figma</span><span
+              class="card-tag">Prototyping</span></div>
+          <h3 class="card-title">FinTrack — Personal Finance App</h3>
+          <p class="card-desc">A mobile-first budgeting and expense tracking application designed to give users complete
+            clarity over their financial health. Focused on data visualisation, intuitive navigation and a calming
+            visual hierarchy that reduces cognitive load.</p>
+          <div class="card-footer">
+            <span class="card-year">2024</span>
+            <span class="card-cta">View on Behance <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></span>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
 
-    <!-- CARD 3 -->
-    <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
-       class="proj-card reveal d3" data-cat="dashboard">
-      <div class="card-img">
-        <div class="card-img-ph">DASH</div>
-        <!-- <span class="card-badge badge-feat">Case Study</span> -->
-        <div class="card-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-      </div>
-      <div class="card-body">
-        <div class="card-tags"><span class="card-tag">Dashboard</span><span class="card-tag">Figma</span><span class="card-tag">Data Viz</span></div>
-        <h3 class="card-title">Analytics Dashboard — SaaS Platform</h3>
-        <p class="card-desc">Translating dense datasets into scannable, action-oriented UI components with a clean grid system for a B2B SaaS analytics tool.</p>
-        <div class="card-footer">
-          <span class="card-year">2024</span>
-          <span class="card-cta">View on Behance <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      <!-- CARD 2 -->
+      <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
+        class="proj-card reveal d2" data-cat="web">
+        <div class="card-img">
+          <img src="assets/images/img_free_istagram_post_mockup_psd_1.png" alt="Portfolio Redesign">
+          <!-- <span class="card-badge badge-feat">Case Study</span> -->
+          <div class="card-arrow"><svg viewBox="0 0 24 24">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg></div>
         </div>
-      </div>
-    </a>
-
-    <!-- CARD 4 -->
-    <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
-       class="proj-card reveal d1" data-cat="app">
-      <div class="card-img">
-        <div class="card-img-ph">FOOD</div>
-        <div class="card-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-      </div>
-      <div class="card-body">
-        <div class="card-tags"><span class="card-tag">App Design</span><span class="card-tag">iOS</span></div>
-        <h3 class="card-title">FoodFlow — Meal Planning App</h3>
-        <p class="card-desc">A meal-planning and grocery-list iOS app built around simplicity — reducing friction in the daily cooking decision loop with smart defaults and a warm, approachable UI.</p>
-        <div class="card-footer">
-          <span class="card-year">2024</span>
-          <span class="card-cta">View on Behance <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <div class="card-body">
+          <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Framer</span></div>
+          <h3 class="card-title">Portfolio Website Redesign</h3>
+          <p class="card-desc">Full redesign of a creative agency's portfolio — cleaner layout, improved content
+            hierarchy and a dark-mode aesthetic that lets the work speak louder.</p>
+          <div class="card-footer">
+            <span class="card-year">2024</span>
+            <span class="card-cta">View on Behance <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></span>
+          </div>
         </div>
+      </a>
+
+      <!-- CARD 3 -->
+      <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
+        class="proj-card reveal d3" data-cat="dashboard">
+        <div class="card-img">
+          <div class="card-img-ph">DASH</div>
+          <!-- <span class="card-badge badge-feat">Case Study</span> -->
+          <div class="card-arrow"><svg viewBox="0 0 24 24">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="card-tag">Dashboard</span><span class="card-tag">Figma</span><span
+              class="card-tag">Data Viz</span></div>
+          <h3 class="card-title">Analytics Dashboard — SaaS Platform</h3>
+          <p class="card-desc">Translating dense datasets into scannable, action-oriented UI components with a clean
+            grid system for a B2B SaaS analytics tool.</p>
+          <div class="card-footer">
+            <span class="card-year">2024</span>
+            <span class="card-cta">View on Behance <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 4 -->
+      <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
+        class="proj-card reveal d1" data-cat="app">
+        <div class="card-img">
+          <div class="card-img-ph">FOOD</div>
+          <div class="card-arrow"><svg viewBox="0 0 24 24">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags"><span class="card-tag">App Design</span><span class="card-tag">iOS</span></div>
+          <h3 class="card-title">FoodFlow — Meal Planning App</h3>
+          <p class="card-desc">A meal-planning and grocery-list iOS app built around simplicity — reducing friction in
+            the daily cooking decision loop with smart defaults and a warm, approachable UI.</p>
+          <div class="card-footer">
+            <span class="card-year">2024</span>
+            <span class="card-cta">View on Behance <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section" id="process">
+    <h2 class="reveal">MY DESIGN PROCESS</h2>
+    <div class="process-grid">
+      <div class="process-card reveal d1">
+        <div class="process-num">01</div>
+        <div class="process-name">DISCOVER</div>
+        <p class="process-desc">Research users, stakeholders and the competitive landscape to build a solid foundation
+          of insight before touching any design tool.</p>
       </div>
-    </a>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process-section" id="process">
-  <h2 class="reveal">MY DESIGN PROCESS</h2>
-  <div class="process-grid">
-    <div class="process-card reveal d1"><div class="process-num">01</div><div class="process-name">DISCOVER</div><p class="process-desc">Research users, stakeholders and the competitive landscape to build a solid foundation of insight before touching any design tool.</p></div>
-    <div class="process-card reveal d2"><div class="process-num">02</div><div class="process-name">DEFINE</div><p class="process-desc">Synthesise research into clear problem statements, user personas and journey maps that align the team on what really needs solving.</p></div>
-    <div class="process-card reveal d3"><div class="process-num">03</div><div class="process-name">IDEATE</div><p class="process-desc">Sketch, wireframe and explore multiple directions rapidly — embracing divergent thinking before converging on the strongest concept.</p></div>
-    <div class="process-card reveal d4"><div class="process-num">04</div><div class="process-name">PROTOTYPE</div><p class="process-desc">Build interactive Figma prototypes at varying fidelity to communicate design intent and gather early feedback from real users.</p></div>
-    <div class="process-card reveal d1"><div class="process-num">05</div><div class="process-name">TEST & DELIVER</div><p class="process-desc">Run usability tests, refine the experience from feedback, and deliver final design systems and specs ready for development.</p></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-hdr reveal">
-    <h2 class="contact-title">GET IN TOUCH</h2>
-    <p class="contact-sub">Ready to bring your vision to life? Let's connect.</p>
-  </div>
-  <form class="c-form reveal d1" onsubmit="handleForm(event)">
-    <input type="text"  class="c-input"    placeholder="Full Name"     required />
-    <input type="email" class="c-input"    placeholder="Email Address" required />
-    <textarea           class="c-textarea" placeholder="Message"       required></textarea>
-    <button type="submit" class="c-submit">Submit</button>
-  </form>
-</section>
-
-<!-- SCROLL TO TOP -->
-<div class="scroll-top-wrap">
-  <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"/>
-    </svg>
-  </button>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="foot-wrap">
-    <div class="foot-left">
-      <div class="foot-info">
-        <h3 class="foot-name">ASWIN SHAJU</h3>
-        <p class="foot-tag">Designing intuitive digital experiences.</p>
+      <div class="process-card reveal d2">
+        <div class="process-num">02</div>
+        <div class="process-name">DEFINE</div>
+        <p class="process-desc">Synthesise research into clear problem statements, user personas and journey maps that
+          align the team on what really needs solving.</p>
       </div>
-      <div class="foot-soc">
-        <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer"><img src="assets/images/img_github_1.svg" alt="GitHub"></a>
-        <a href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA==" target="_blank" rel="noopener noreferrer"><img src="assets/images/img_instagram_1.svg" alt="Instagram"></a>
-        <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"><img src="assets/images/img_behance_1.svg" alt="Behance"></a>
+      <div class="process-card reveal d3">
+        <div class="process-num">03</div>
+        <div class="process-name">IDEATE</div>
+        <p class="process-desc">Sketch, wireframe and explore multiple directions rapidly — embracing divergent thinking
+          before converging on the strongest concept.</p>
+      </div>
+      <div class="process-card reveal d4">
+        <div class="process-num">04</div>
+        <div class="process-name">PROTOTYPE</div>
+        <p class="process-desc">Build interactive Figma prototypes at varying fidelity to communicate design intent and
+          gather early feedback from real users.</p>
+      </div>
+      <div class="process-card reveal d1">
+        <div class="process-num">05</div>
+        <div class="process-name">TEST & DELIVER</div>
+        <p class="process-desc">Run usability tests, refine the experience from feedback, and deliver final design
+          systems and specs ready for development.</p>
       </div>
     </div>
-    <p class="foot-copy">© 2026 Aswin Shaju. All rights reserved.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-hdr reveal">
+      <h2 class="contact-title">GET IN TOUCH</h2>
+      <p class="contact-sub">Ready to bring your vision to life? Let's connect.</p>
+    </div>
+    <form class="c-form reveal d1" onsubmit="handleForm(event)">
+      <input type="text" class="c-input" placeholder="Full Name" required />
+      <input type="email" class="c-input" placeholder="Email Address" required />
+      <textarea class="c-textarea" placeholder="Message" required></textarea>
+      <button type="submit" class="c-submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- SCROLL TO TOP -->
+  <div class="scroll-top-wrap">
+    <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
   </div>
-</footer>
 
-<script>
-  /* THEME */
-  const htmlEl = document.documentElement;
-  const themeBtn = document.getElementById('themeTog');
-  function applyTheme(t){ htmlEl.setAttribute('data-theme',t); localStorage.setItem('theme',t); }
-  applyTheme(localStorage.getItem('theme')||'dark');
-  themeBtn.addEventListener('click',()=>applyTheme(htmlEl.getAttribute('data-theme')==='dark'?'light':'dark'));
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="foot-wrap">
+      <div class="foot-left">
+        <div class="foot-info">
+          <h3 class="foot-name">ASWIN SHAJU</h3>
+          <p class="foot-tag">Designing intuitive digital experiences.</p>
+        </div>
+        <div class="foot-soc">
+          <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer"><img
+              src="assets/images/img_github_1.svg" alt="GitHub"></a>
+          <a href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA==" target="_blank"
+            rel="noopener noreferrer"><img src="assets/images/img_instagram_1.svg" alt="Instagram"></a>
+          <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"><img
+              src="assets/images/img_behance_1.svg" alt="Behance"></a>
+        </div>
+      </div>
+      <p class="foot-copy">© 2026 Aswin Shaju. All rights reserved.</p>
+    </div>
+  </footer>
 
-  /* REVEAL */
-  function revealAll(){
-    document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>{
-      if(el.getBoundingClientRect().top < window.innerHeight*0.9) el.classList.add('v');
-    });
-  }
-  window.addEventListener('scroll',revealAll,{passive:true});
-  window.addEventListener('load',()=>setTimeout(revealAll,200));
-  setTimeout(revealAll,200);
+  <script>
+    /* THEME */
+    const htmlEl = document.documentElement;
+    const themeBtn = document.getElementById('themeTog');
+    function applyTheme(t) { htmlEl.setAttribute('data-theme', t); localStorage.setItem('theme', t); }
+    applyTheme(localStorage.getItem('theme') || 'dark');
+    themeBtn.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
-  /* FILTER */
-  function filterCards(btn,cat){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.proj-card').forEach(card=>{
-      const show = cat==='all' || card.dataset.cat===cat;
-      card.style.transition='opacity .35s,transform .35s';
-      card.style.opacity=show?'1':'0.15';
-      card.style.pointerEvents=show?'auto':'none';
-      card.style.transform=show?'':'scale(0.97)';
-    });
-  }
+    /* REVEAL */
+    function revealAll() {
+      document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add('v');
+      });
+    }
+    window.addEventListener('scroll', revealAll, { passive: true });
+    window.addEventListener('load', () => setTimeout(revealAll, 200));
+    setTimeout(revealAll, 200);
 
-  /* FORM */
-  function handleForm(e){
-    e.preventDefault();
-    const btn=e.target.querySelector('.c-submit');
-    const orig=btn.textContent;
-    btn.textContent='Sent Successfully \u2713';
-    setTimeout(()=>{btn.textContent=orig;e.target.reset();},3000);
-  }
-</script>
+    /* FILTER */
+    function filterCards(btn, cat) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.proj-card').forEach(card => {
+        const show = cat === 'all' || card.dataset.cat === cat;
+        card.style.transition = 'opacity .35s,transform .35s';
+        card.style.opacity = show ? '1' : '0.15';
+        card.style.pointerEvents = show ? 'auto' : 'none';
+        card.style.transform = show ? '' : 'scale(0.97)';
+      });
+    }
+
+    /* FORM */
+    function handleForm(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.c-submit');
+      const orig = btn.textContent;
+      btn.textContent = 'Sent Successfully \u2713';
+      setTimeout(() => { btn.textContent = orig; e.target.reset(); }, 3000);
+    }
+  </script>
 </body>
+
 </html>
