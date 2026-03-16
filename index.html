@@ -24,6 +24,25 @@
         display: block;
         max-width: 100%;
         height: auto;
+        -webkit-touch-callout: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* IMAGE PROTECTION */
+      .img-wrap {
+        position: relative;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+
+      .img-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        cursor: default;
+        background: transparent;
       }
       :root {
         --purple: #8b5cf6;
@@ -886,6 +905,7 @@
         flex: 0 0 320px;
         position: sticky;
         top: 110px;
+        z-index: 3;
       }
       .svc-img {
         width: 100%;
@@ -1196,10 +1216,10 @@
         transform: scale(1.04);
       }
       .proj-card-1 .proj-bg {
-        background-image: url("assets/images/img_01_free_macbook_pro_16_mockup_1.png");
+        background-image: url("assets/images/ux.jpeg");
       }
       .proj-card-2 .proj-bg {
-        background-image: url("assets/images/img_free_istagram_post_mockup_psd_1.png");
+        background-image: url("assets/images/design.jpeg");
       }
       .proj-overlay {
         position: absolute;
@@ -2512,7 +2532,7 @@
             <div class="cinfo">
               <div>
                 <span class="email-lbl">Email:</span><br />
-                <a href="/cdn-cgi/l/email-protection#9dfceeeaf4f3feeff8fce9f8eeb3f9f8ebddfaf0fcf4f1b3fef2f0" class="email-a"><span class="__cf_email__" data-cfemail="422331352b2c213027233627316c26273402252f232b2e6c212d2f">[email&#160;protected]</span></a>
+                <a href="/cdn-cgi/l/email-protection#cbaab8bca2a5a8b9aeaabfaeb8e5afaebd8baca6aaa2a7e5a8a4a6" class="email-a"><span class="__cf_email__" data-cfemail="721301051b1c110017130617015c16170432151f131b1e5c111d1f">[email&#160;protected]</span></a>
               </div>
               <div class="socials">
                 <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer">
@@ -2655,7 +2675,7 @@
       </footer>
     </main>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /* ===== PARTICLE BACKGROUND ===== */
     (function () {
       const canvas = document.getElementById('bg-canvas');
@@ -2886,14 +2906,36 @@
 
       /* HAMBURGER */
       const hbg = document.getElementById("hbg");
-      const mobNav = document.getElementById("mobNav");
-      hbg.addEventListener("click", e => {
-        e.stopPropagation();
-        const o = mobNav.classList.toggle("open");
-        hbg.classList.toggle("open", o);
+      const mobN
+    /* ===== IMAGE PROTECTION ===== */
+    // Disable right-click context menu on images
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block drag-to-save on all images
+    document.addEventListener('dragstart', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block common keyboard shortcuts for saving / viewing source
+    document.addEventListener('keydown', function (e) {
+      const key = e.key.toLowerCase();
+      if (e.ctrlKey && (key === 's' || key === 'u')) { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) { e.preventDefault(); return false; }
+      if (e.key === 'F12') { e.preventDefault(); return false; }
+      if (e.ctrlKey && key === 'a') { e.preventDefault(); return false; }
+    });
+
+    // Wrap every img in .track carousels with a transparent overlay div
+    window.addEventListener('load', function () {
+      document.querySelectorAll('.track img').forEach(function (img) {
+        const wrap = document.createElement('div');
+        wrap.className = 'img-wrap';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
       });
-
-
-      </script>
-      </body>
-    </html>
+    });
+  </script>
+</body>
+</html>

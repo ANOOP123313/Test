@@ -58,6 +58,25 @@
     img {
       display: block;
       max-width: 100%;
+      -webkit-touch-callout: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* IMAGE PROTECTION */
+    .img-wrap {
+      position: relative;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      cursor: default;
+      background: transparent;
     }
 
     body {
@@ -1406,6 +1425,36 @@
         card.style.transform = show ? '' : 'scale(0.97)';
       });
     }
+
+    /* ===== IMAGE PROTECTION ===== */
+    // Disable right-click context menu on images
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block drag-to-save on all images
+    document.addEventListener('dragstart', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block common keyboard shortcuts for saving / viewing source
+    document.addEventListener('keydown', function (e) {
+      const key = e.key.toLowerCase();
+      if (e.ctrlKey && (key === 's' || key === 'u')) { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) { e.preventDefault(); return false; }
+      if (e.key === 'F12') { e.preventDefault(); return false; }
+      if (e.ctrlKey && key === 'a') { e.preventDefault(); return false; }
+    });
+
+    // Wrap every img in .track carousels with a transparent overlay div
+    window.addEventListener('load', function () {
+      document.querySelectorAll('.track img').forEach(function (img) {
+        const wrap = document.createElement('div');
+        wrap.className = 'img-wrap';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
+      });
+    });
 
     /* FORM */
    /* ===== EMAILJS FORM ===== */

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Story — Aswin Shaju</title>
-    <!-- EmailJS SDK -->
+  <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -60,6 +60,25 @@
     img {
       display: block;
       max-width: 100%;
+      -webkit-touch-callout: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* IMAGE PROTECTION */
+    .img-wrap {
+      position: relative;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      cursor: default;
+      background: transparent;
     }
 
     html {
@@ -627,6 +646,14 @@
       transition-delay: .55s;
     }
 
+    .tl-item:nth-child(7) {
+      transition-delay: .65s;
+    }
+
+    .tl-item:nth-child(8) {
+      transition-delay: .75s;
+    }
+
     .tl-dot {
       position: absolute;
       left: -36px;
@@ -671,7 +698,7 @@
 
     .philo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
       margin-top: 20px;
     }
@@ -704,6 +731,10 @@
 
     .philo-card:nth-child(3) {
       transition-delay: .25s;
+    }
+
+    .philo-card:nth-child(4) {
+      transition-delay: .35s;
     }
 
     .philo-card:hover {
@@ -1102,12 +1133,33 @@
 
       .philo-grid {
         grid-template-columns: 1fr 1fr;
-      }
-    }
+      }    }
 
     @media(max-width:600px) {
       .hero {
         padding: 130px 20px 60px;
+      }
+
+      .hero-title {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .hero-eyebrow {
+        display: none;
+      }
+
+      .hero-tags {
+        justify-content: center;
+      }
+
+      .section-label {
+        text-align: center;
+      }
+
+      .section-title {
+        text-align: center;
       }
 
       .philo-grid {
@@ -1188,18 +1240,41 @@
         font-size: 22px;
       }
     }
-  
-      /* EmailJS Form validation */
-      .c-input.invalid, .c-textarea.invalid {
-        border-color: #f87171 !important;
-        box-shadow: 0 0 0 3px rgba(248,113,113,.15) !important;
-      }
-      .field-error { font-size:12px; color:#f87171; margin-top:-6px; padding-left:4px; }
-      .form-status { text-align:center; font-size:14px; min-height:20px; transition:opacity .3s; }
-      .form-status.success { color:#4ade80; }
-      .form-status.error   { color:#f87171; }
-      .c-submit:disabled   { opacity:0.6; cursor:not-allowed; }
-  
+
+    /* EmailJS Form validation */
+    .c-input.invalid,
+    .c-textarea.invalid {
+      border-color: #f87171 !important;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, .15) !important;
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: #f87171;
+      margin-top: -6px;
+      padding-left: 4px;
+    }
+
+    .form-status {
+      text-align: center;
+      font-size: 14px;
+      min-height: 20px;
+      transition: opacity .3s;
+    }
+
+    .form-status.success {
+      color: #4ade80;
+    }
+
+    .form-status.error {
+      color: #f87171;
+    }
+
+    .c-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     /* ── ANIMATED BACKGROUND ── */
     #bg-canvas {
       position: fixed;
@@ -1209,6 +1284,7 @@
       z-index: 0;
       pointer-events: none;
     }
+
     .aurora {
       position: fixed;
       inset: 0;
@@ -1216,6 +1292,7 @@
       pointer-events: none;
       overflow: hidden;
     }
+
     .aurora-blob {
       position: absolute;
       border-radius: 50%;
@@ -1223,37 +1300,84 @@
       opacity: 0;
       animation: auroraFloat 18s ease-in-out infinite;
     }
-    [data-theme="dark"] .aurora-blob { opacity: 0.13; }
-    [data-theme="light"] .aurora-blob { opacity: 0.09; }
+
+    [data-theme="dark"] .aurora-blob {
+      opacity: 0.13;
+    }
+
+    [data-theme="light"] .aurora-blob {
+      opacity: 0.09;
+    }
+
     .aurora-blob:nth-child(1) {
-      width: 600px; height: 600px;
+      width: 600px;
+      height: 600px;
       background: radial-gradient(circle, #8b5cf6, #4f46e5);
-      top: -10%; left: -10%;
-      animation-delay: 0s; animation-duration: 20s;
+      top: -10%;
+      left: -10%;
+      animation-delay: 0s;
+      animation-duration: 20s;
     }
+
     .aurora-blob:nth-child(2) {
-      width: 500px; height: 500px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, #a78bfa, #7c3aed);
-      top: 30%; right: -10%;
-      animation-delay: -7s; animation-duration: 24s;
+      top: 30%;
+      right: -10%;
+      animation-delay: -7s;
+      animation-duration: 24s;
     }
+
     .aurora-blob:nth-child(3) {
-      width: 400px; height: 400px;
+      width: 400px;
+      height: 400px;
       background: radial-gradient(circle, #6d28d9, #2563eb);
-      bottom: -5%; left: 30%;
-      animation-delay: -13s; animation-duration: 22s;
+      bottom: -5%;
+      left: 30%;
+      animation-delay: -13s;
+      animation-duration: 22s;
     }
+
     @keyframes auroraFloat {
-      0%   { transform: translate(0px,   0px)  scale(1);    }
-      25%  { transform: translate(40px, -30px) scale(1.05); }
-      50%  { transform: translate(-20px, 50px) scale(0.95); }
-      75%  { transform: translate(30px,  20px) scale(1.03); }
-      100% { transform: translate(0px,   0px)  scale(1);    }
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+
+      25% {
+        transform: translate(40px, -30px) scale(1.05);
+      }
+
+      50% {
+        transform: translate(-20px, 50px) scale(0.95);
+      }
+
+      75% {
+        transform: translate(30px, 20px) scale(1.03);
+      }
+
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
     }
+
     /* keep all page content above bg layers */
-    .nav, .hero, .section, .contact-section, .stats,
-    footer, .scroll-top-wrap, header, main, .about,
-    .work, .filter-wrap, .cards-grid { position: relative; z-index: 1; }
+    .nav,
+    .hero,
+    .section,
+    .contact-section,
+    .stats,
+    footer,
+    .scroll-top-wrap,
+    header,
+    main,
+    .about,
+    .work,
+    .filter-wrap,
+    .cards-grid {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 
@@ -1310,14 +1434,16 @@
       <div class="hero-text">
         <span class="hero-eyebrow">
           <span class="eyebrow-dot"></span>
-          The Journey
+          Designing visuals, evolving into experiences
         </span>
         <h1 class="hero-title">
           MY<br><span>STORY</span>
         </h1>
         <p class="hero-desc">
-          From a curious student scrolling through beautiful interfaces at midnight, to a designer who turns ideas into
-          pixels that people actually feel — this is how it all began.
+          My journey into design began with pencil sketches and gradually evolved into digital creativity. Over the past
+          3 years, I’ve worked with 250+ clients as a freelance graphic designer, building
+          strong visual communication skills. <br><br> Today, I’m expanding that
+          foundation into UI/UX design - focusing on creating thoughtful, user-centered digital experiences.
         </p>
         <div class="hero-tags">
           <span class="tag">UI/UX Designer</span>
@@ -1343,87 +1469,80 @@
 
   <!-- TIMELINE / STORY -->
   <section class="story-section">
-    <p class="section-label reveal">Origin Story</p>
+    <p class="section-label reveal">The Journey</p>
     <h2 class="section-title reveal d1">How It All<br>Unfolded</h2>
 
     <div class="timeline">
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-year">2020 — The Spark</div>
-        <h3 class="tl-title">Falling in Love with the Screen</h3>
+        <div class="tl-year">2016 — Discovering Creativity</div>
+        <h3 class="tl-title">First steps into drawing</h3>
         <p class="tl-body">
-          It started with a YouTube thumbnail. I was twelve minutes into a rabbit hole of video editing tutorials when I
-          noticed that the really good channels all had one thing in common — their visuals just <em>felt</em> right.
-          Clean, striking, purposeful. That feeling hooked me before I even had a name for it. I downloaded Photoshop
-          with a free trial I'd refresh every month, and spent late nights on nothing but text effects and colour
-          grading. No roadmap, no mentor — just curiosity and caffeine.
+          Long before I discovered design software, creativity started with pencil and paper. I spent hours sketching objects by observing and recreating them, which slowly sharpened my visual thinking. During school events and festivals, I often contributed artwork for bulletin boards and Athapookalam designs, becoming known as one of the strongest drawing students in my school.
         </p>
       </div>
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-year">2021 — First Real Work</div>
-        <h3 class="tl-title">Freelancing Before I Knew the Word</h3>
+        <div class="tl-year">2017 — Entering Digital Art</div>
+        <h3 class="tl-title">First digital painting competition</h3>
         <p class="tl-body">
-          A friend asked me to design a poster for their college event. Then another friend. Then someone they knew.
-          Before I realised it, I was a freelance graphic designer — completely by accident. I was designing social
-          media creatives, profile pictures and event banners for people across Kerala. Every project taught me
-          something the tutorials couldn't: that real clients have real feelings about their brand, and your job is to
-          translate those feelings into visuals they didn't know they needed.
+          My IT teacher introduced me to digital painting and encouraged me to participate in the Kerala School Science Fest competitions. At first, it was challenging — drawing with a mouse instead of a pencil felt completely unfamiliar. But in my first attempt, I secured 1st place at the Sub-District level and later 1st place at the District level, marking my first recognition in digital creativity.
         </p>
       </div>
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-year">2022–2023 — Deepening the Craft</div>
-        <h3 class="tl-title">250+ Clients and Counting</h3>
+        <div class="tl-year">2017–2020 — Competitive Digital Design</div>
+        <h3 class="tl-title">Representing my school in the Science Fest</h3>
         <p class="tl-body">
-          Over two years, I worked with over 250 clients on graphic design projects — from student content creators to
-          small businesses looking for a professional face. I learned Adobe Illustrator, moved into Lightroom for photo
-          editing, and started using Inkscape and GIMP alongside the Adobe suite. More importantly, I learned that speed
-          without quality is noise, and that a designer who listens is always better than one who just delivers. My
-          satisfaction rate held strong at 4.8/5 — and those reviews meant more to me than any certificate.
+          From 5th to 10th grade, I represented my school every year in the Digital Painting category of the Kerala School Science Fest. During this time, I worked with tools like XPaint, GIMP, and Inkscape, exploring digital illustration and image editing. I reached the State Level twice (8th and 10th grade) and secured an A Grade with 9th position in the state competition, strengthening my foundation in digital creativity.
         </p>
       </div>
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-year">2023 — The Pivot</div>
-        <h3 class="tl-title">Discovering UI/UX — Design With a Purpose</h3>
+        <div class="tl-year">2020–2022 — Self-Learning Design</div>
+        <h3 class="tl-title">Exploring creative tools independently</h3>
         <p class="tl-body">
-          I stumbled onto Figma one evening and spent the next six hours inside it without blinking. Something clicked.
-          Graphic design had always been about how things <em>look</em> — but UI/UX was about how things <em>work</em>.
-          It asked deeper questions: Why would a user tap this? What happens if they're confused here? How do we reduce
-          friction at every step? I was obsessed. I started rebuilding apps I used daily — just to practice, just to
-          understand the thinking behind every decision.
+          After school competitions ended, my curiosity pushed me to explore design beyond digital painting. I started learning image manipulation, poster design, and visual editing through online resources and experimentation. This phase introduced me to Adobe Photoshop, Illustrator, and basic video editing, expanding my ability to create more complex visual designs.
         </p>
       </div>
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-year">2024 — Building a New Skillset</div>
-        <h3 class="tl-title">From Figma Mockups to Real Prototypes</h3>
+        <div class="tl-year">2022 — Starting My Freelance Journey</div>
+        <h3 class="tl-title">Turning creativity into real work</h3>
         <p class="tl-body">
-          My first year in UI/UX design was intense and deliberate. I learned wireframing from scratch, built
-          interactive prototypes in Figma, taught myself Framer for motion-driven web builds, and picked up enough HTML
-          and CSS to bridge the gap between design and code. I designed a personal finance app, a SaaS analytics
-          dashboard, a meal planning app, and more — each one a new lesson in information architecture,
-          micro-interactions, and design systems. I began collaborating with developers, learning their language, and
-          understanding what it actually takes to ship clean design at scale.
+          At the beginning of my college years, I started a design page on Instagram where I shared creative edits and poster designs. As the page grew, people began reaching out for custom work. What started as experimentation soon became freelance design work, including profile pictures, posters, thumbnails, logo designs, and social media creatives.
         </p>
       </div>
 
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-year">2025–Now — What's Next</div>
-        <h3 class="tl-title">Stepping Into the Industry as a Fresher</h3>
+        <div class="tl-year">2022–Present — Growing as a Freelance Designer</div>
+        <h3 class="tl-title">250+ clients and real-world design experience</h3>
         <p class="tl-body">
-          I'm a fresher — and I say that with pride. I've spent years building real skills on real projects before ever
-          stepping into a studio. I come with a portfolio shaped by hundreds of genuine client interactions, a mindset
-          trained on both aesthetics and usability, and an energy that only comes from genuinely loving the work. I'm
-          not looking for my first project — I'm looking for the right team to grow alongside. If you're building
-          something meaningful, let's talk.
+          Over the past three years, I've worked with 250+ clients across various creative projects. Freelancing helped me understand client communication, design problem-solving, and visual storytelling while continuously improving my technical skills in tools like Photoshop and Illustrator.
+        </p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2025 — Transition Into UI/UX</div>
+        <h3 class="tl-title">Expanding from visuals to user experience</h3>
+        <p class="tl-body">
+          After graduating with a BCA degree, I realized I wanted to stay in the IT field while continuing my creative journey. This led me to discover UI/UX design, where design meets technology and user behavior. I joined a UI/UX internship at an IT company, where I began learning interface design, user flows, and product thinking using tools like Figma.
+        </p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2025–Present — Designing Digital Experiences</div>
+        <h3 class="tl-title">Learning, building, and evolving</h3>
+        <p class="tl-body">
+          Today, I continue working as a freelance graphic designer while actively developing my UI/UX skills. I've worked on real client UI projects during my internship and continue exploring modern design tools such as Figma, Framer, and emerging AI design workflows. My focus now is on crafting digital experiences that combine strong visual design with meaningful usability.
         </p>
       </div>
 
@@ -1437,22 +1556,24 @@
 
     <div class="philo-grid">
       <div class="philo-card">
-        <span class="philo-icon">🎯</span>
-        <div class="philo-title">PURPOSE FIRST</div>
-        <p class="philo-desc">Every design decision needs a reason. Beauty is empty without function, and function
-          without beauty goes unnoticed. I try to find the intersection where both coexist without compromise.</p>
-      </div>
-      <div class="philo-card">
         <span class="philo-icon">👁</span>
-        <div class="philo-title">EMPATHY IN PIXELS</div>
-        <p class="philo-desc">Good design starts with understanding people — their frustrations, habits, and
-          expectations. I design for the person who doesn't read instructions, because most people don't.</p>
+        <div class="philo-title">VISUAL CLARITY FIRST</div>
+        <p class="philo-desc">My journey started with drawing and visual storytelling, which taught me how important clarity is in communication. Whether it's a graphic poster or a digital interface, I focus on creating designs that are visually clear, balanced, and easy to understand at a glance.</p>
       </div>
       <div class="philo-card">
-        <span class="philo-icon">⚡</span>
-        <div class="philo-title">CLARITY OVER CLEVERNESS</div>
-        <p class="philo-desc">A clever interface that confuses is a failed interface. I chase simplicity — not because
-          it's easy, but because stripping everything down to only what matters is the hardest thing to do well.</p>
+        <span class="philo-icon">🎯</span>
+        <div class="philo-title">CREATIVITY WITH PURPOSE</div>
+        <p class="philo-desc">Design is not only about making things look good — it's about solving problems. I approach every design with the goal of combining creativity with purpose, ensuring that the visuals support the message and the user's needs.</p>
+      </div>
+      <div class="philo-card">
+        <span class="philo-icon">🔍</span>
+        <div class="philo-title">LEARNING THROUGH EXPLORATION</div>
+        <p class="philo-desc">Much of my design journey has been shaped by curiosity and self-learning. From experimenting with tools like GIMP and Photoshop to exploring modern tools like Figma and Framer, I enjoy continuously discovering new ways to improve how I design.</p>
+      </div>
+      <div class="philo-card">
+        <span class="philo-icon">🤝</span>
+        <div class="philo-title">DESIGNING FOR PEOPLE</div>
+        <p class="philo-desc">As I transition into UI/UX design, my focus has expanded from visuals to user experience. I believe good design should feel intuitive, helping users navigate digital products effortlessly while maintaining a strong visual identity.</p>
       </div>
     </div>
   </section>
@@ -1460,8 +1581,8 @@
   <!-- QUOTE -->
   <div class="quote-block" id="quoteBlock">
     <span class="quote-mark">"</span>
-    <p class="quote-text">Design is not just what it looks like and feels like. Design is how it works.</p>
-    <p class="quote-attr">— Steve Jobs, a reminder I read every morning</p>
+    <p class="quote-text">Design creates culture. Culture shapes values. Values determine the future.</p>
+    <p class="quote-attr">— Robert L. Peters</p>
   </div>
 
   <!-- SKILLS TICKER -->
@@ -1473,27 +1594,27 @@
         <span class="ticker-item"><span class="dot"></span>Adobe Photoshop</span>
         <span class="ticker-item"><span class="dot"></span>Adobe Illustrator</span>
         <span class="ticker-item"><span class="dot"></span>Framer</span>
-        <span class="ticker-item"><span class="dot"></span>HTML & CSS</span>
+        <span class="ticker-item"><span class="dot"></span>HTML</span>
+        <span class="ticker-item"><span class="dot"></span>CSS</span>
         <span class="ticker-item"><span class="dot"></span>Adobe Lightroom</span>
         <span class="ticker-item"><span class="dot"></span>Inkscape</span>
         <span class="ticker-item"><span class="dot"></span>GIMP</span>
-        <span class="ticker-item"><span class="dot"></span>Wireframing</span>
-        <span class="ticker-item"><span class="dot"></span>Prototyping</span>
-        <span class="ticker-item"><span class="dot"></span>User Research</span>
-        <span class="ticker-item"><span class="dot"></span>Design Systems</span>
+        <span class="ticker-item"><span class="dot"></span>Adobe XD</span>
+        <span class="ticker-item"><span class="dot"></span>Penpot</span>
+        <!-- <span class="ticker-item"><span class="dot"></span>User Research</span>
+        <span class="ticker-item"><span class="dot"></span>Design Systems</span> -->
         <!-- duplicate for seamless loop -->
-        <span class="ticker-item"><span class="dot"></span>Figma</span>
+         <span class="ticker-item"><span class="dot"></span>Figma</span>
         <span class="ticker-item"><span class="dot"></span>Adobe Photoshop</span>
         <span class="ticker-item"><span class="dot"></span>Adobe Illustrator</span>
         <span class="ticker-item"><span class="dot"></span>Framer</span>
-        <span class="ticker-item"><span class="dot"></span>HTML & CSS</span>
+        <span class="ticker-item"><span class="dot"></span>HTML</span>
+        <span class="ticker-item"><span class="dot"></span>CSS</span>
         <span class="ticker-item"><span class="dot"></span>Adobe Lightroom</span>
         <span class="ticker-item"><span class="dot"></span>Inkscape</span>
         <span class="ticker-item"><span class="dot"></span>GIMP</span>
-        <span class="ticker-item"><span class="dot"></span>Wireframing</span>
-        <span class="ticker-item"><span class="dot"></span>Prototyping</span>
-        <span class="ticker-item"><span class="dot"></span>User Research</span>
-        <span class="ticker-item"><span class="dot"></span>Design Systems</span>
+        <span class="ticker-item"><span class="dot"></span>Adobe XD</span>
+        <span class="ticker-item"><span class="dot"></span>Penpot</span>
       </div>
     </div>
   </div>
@@ -1504,10 +1625,10 @@
       <h2 class="contact-title">GET IN TOUCH</h2>
       <p class="contact-sub">Ready to bring your vision to life? Let's connect.</p>
     </div>
-        <form class="c-form reveal d1" id="contactForm" onsubmit="handleForm(event)" novalidate>
-      <input type="text"  class="c-input"    name="name"    placeholder="Full Name"     required />
-      <input type="email" class="c-input"    name="email"   placeholder="Email Address" required />
-      <textarea           class="c-textarea" name="message" placeholder="Message"       required></textarea>
+    <form class="c-form reveal d1" id="contactForm" onsubmit="handleForm(event)" novalidate>
+      <input type="text" class="c-input" name="name" placeholder="Full Name" required />
+      <input type="email" class="c-input" name="email" placeholder="Email Address" required />
+      <textarea class="c-textarea" name="message" placeholder="Message" required></textarea>
       <button type="submit" class="c-submit" id="submitBtn">Submit</button>
       <p class="form-status" id="formStatus"></p>
     </form>
@@ -1630,10 +1751,10 @@
     setTimeout(revealAll, 200);
 
     /* FORM */
-   /* ===== EMAILJS FORM ===== */
+    /* ===== EMAILJS FORM ===== */
     // ─── REPLACE these three values with your own from emailjs.com ───
-    const EMAILJS_PUBLIC_KEY  = 'HCoPsdweFUffqWEfX';   // Account → API Keys
-    const EMAILJS_SERVICE_ID  = 'service_yf7lp4p';   // Email Services → Service ID
+    const EMAILJS_PUBLIC_KEY = 'HCoPsdweFUffqWEfX';   // Account → API Keys
+    const EMAILJS_SERVICE_ID = 'service_yf7lp4p';   // Email Services → Service ID
     const EMAILJS_TEMPLATE_ID = 'template_j6tzk4i';  // Email Templates → Template ID
 
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -1654,9 +1775,9 @@
       if (err) err.remove();
     }
     function validateForm(form) {
-      const nameF  = form.querySelector('[name="name"]');
+      const nameF = form.querySelector('[name="name"]');
       const emailF = form.querySelector('[name="email"]');
-      const msgF   = form.querySelector('[name="message"]');
+      const msgF = form.querySelector('[name="message"]');
       let valid = true;
       if (!nameF.value.trim()) {
         setError(nameF, 'Please enter your full name.'); valid = false;
@@ -1676,38 +1797,38 @@
       } else clearError(msgF);
       return valid;
     }
-    document.querySelectorAll('.c-input, .c-textarea').forEach(function(field) {
-      field.addEventListener('input', function() { clearError(field); });
+    document.querySelectorAll('.c-input, .c-textarea').forEach(function (field) {
+      field.addEventListener('input', function () { clearError(field); });
     });
 
     function handleForm(e) {
       e.preventDefault();
-      var form   = e.target;
-      var btn    = document.getElementById('submitBtn');
+      var form = e.target;
+      var btn = document.getElementById('submitBtn');
       var status = document.getElementById('formStatus');
       if (!validateForm(form)) return;
-      btn.disabled     = true;
-      btn.textContent  = 'Sending…';
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
       status.className = 'form-status';
       status.textContent = '';
       emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
-        .then(function() {
-          btn.textContent    = 'Sent ✓';
+        .then(function () {
+          btn.textContent = 'Sent ✓';
           status.textContent = "Message sent! I'll get back to you soon.";
-          status.className   = 'form-status success';
+          status.className = 'form-status success';
           form.reset();
-          setTimeout(function() {
-            btn.disabled       = false;
-            btn.textContent    = 'Submit';
+          setTimeout(function () {
+            btn.disabled = false;
+            btn.textContent = 'Submit';
             status.textContent = '';
           }, 4000);
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.error('EmailJS error:', err);
-          btn.disabled       = false;
-          btn.textContent    = 'Submit';
+          btn.disabled = false;
+          btn.textContent = 'Submit';
           status.textContent = 'Something went wrong. Please try again.';
-          status.className   = 'form-status error';
+          status.className = 'form-status error';
         });
     }
 
@@ -1718,6 +1839,36 @@
       document.querySelectorAll('.orb').forEach((orb, i) => {
         const factor = (i + 1) * 0.4;
         orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+      });
+    });
+
+    /* ===== IMAGE PROTECTION ===== */
+    // Disable right-click context menu on images
+    document.addEventListener('contextmenu', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block drag-to-save on all images
+    document.addEventListener('dragstart', function (e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block common keyboard shortcuts for saving / viewing source
+    document.addEventListener('keydown', function (e) {
+      const key = e.key.toLowerCase();
+      if (e.ctrlKey && (key === 's' || key === 'u')) { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) { e.preventDefault(); return false; }
+      if (e.key === 'F12') { e.preventDefault(); return false; }
+      if (e.ctrlKey && key === 'a') { e.preventDefault(); return false; }
+    });
+
+    // Wrap every img in .track carousels with a transparent overlay div
+    window.addEventListener('load', function () {
+      document.querySelectorAll('.track img').forEach(function (img) {
+        const wrap = document.createElement('div');
+        wrap.className = 'img-wrap';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
       });
     });
   </script>
