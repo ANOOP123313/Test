@@ -2532,7 +2532,7 @@
             <div class="cinfo">
               <div>
                 <span class="email-lbl">Email:</span><br />
-                <a href="/cdn-cgi/l/email-protection#cbaab8bca2a5a8b9aeaabfaeb8e5afaebd8baca6aaa2a7e5a8a4a6" class="email-a"><span class="__cf_email__" data-cfemail="721301051b1c110017130617015c16170432151f131b1e5c111d1f">[email&#160;protected]</span></a>
+                <a href="mailto:aswincreates.dev@gmail.com" class="email-a">aswincreates.dev@gmail.com</a>
               </div>
               <div class="socials">
                 <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer">
@@ -2906,7 +2906,13 @@
 
       /* HAMBURGER */
       const hbg = document.getElementById("hbg");
-      const mobN
+      const mobNav = document.getElementById("mobNav");
+      hbg.addEventListener("click", e => {
+        e.stopPropagation();
+        const o = mobNav.classList.toggle("open");
+        hbg.classList.toggle("open", o);
+      });
+
     /* ===== IMAGE PROTECTION ===== */
     // Disable right-click context menu on images
     document.addEventListener('contextmenu', function (e) {
