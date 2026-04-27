@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UI/UX Projects — Aswin Shaju</title>
-    <!-- EmailJS SDK -->
+  <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
@@ -1006,18 +1006,41 @@
         padding: 28px 16px 24px;
       }
     }
-  
-      /* EmailJS Form validation */
-      .c-input.invalid, .c-textarea.invalid {
-        border-color: #f87171 !important;
-        box-shadow: 0 0 0 3px rgba(248,113,113,.15) !important;
-      }
-      .field-error { font-size:12px; color:#f87171; margin-top:-6px; padding-left:4px; }
-      .form-status { text-align:center; font-size:14px; min-height:20px; transition:opacity .3s; }
-      .form-status.success { color:#4ade80; }
-      .form-status.error   { color:#f87171; }
-      .c-submit:disabled   { opacity:0.6; cursor:not-allowed; }
-  
+
+    /* EmailJS Form validation */
+    .c-input.invalid,
+    .c-textarea.invalid {
+      border-color: #f87171 !important;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, .15) !important;
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: #f87171;
+      margin-top: -6px;
+      padding-left: 4px;
+    }
+
+    .form-status {
+      text-align: center;
+      font-size: 14px;
+      min-height: 20px;
+      transition: opacity .3s;
+    }
+
+    .form-status.success {
+      color: #4ade80;
+    }
+
+    .form-status.error {
+      color: #f87171;
+    }
+
+    .c-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     /* ── ANIMATED BACKGROUND ── */
     #bg-canvas {
       position: fixed;
@@ -1027,6 +1050,7 @@
       z-index: 0;
       pointer-events: none;
     }
+
     .aurora {
       position: fixed;
       inset: 0;
@@ -1034,6 +1058,7 @@
       pointer-events: none;
       overflow: hidden;
     }
+
     .aurora-blob {
       position: absolute;
       border-radius: 50%;
@@ -1041,37 +1066,84 @@
       opacity: 0;
       animation: auroraFloat 18s ease-in-out infinite;
     }
-    [data-theme="dark"] .aurora-blob { opacity: 0.13; }
-    [data-theme="light"] .aurora-blob { opacity: 0.09; }
+
+    [data-theme="dark"] .aurora-blob {
+      opacity: 0.13;
+    }
+
+    [data-theme="light"] .aurora-blob {
+      opacity: 0.09;
+    }
+
     .aurora-blob:nth-child(1) {
-      width: 600px; height: 600px;
+      width: 600px;
+      height: 600px;
       background: radial-gradient(circle, #8b5cf6, #4f46e5);
-      top: -10%; left: -10%;
-      animation-delay: 0s; animation-duration: 20s;
+      top: -10%;
+      left: -10%;
+      animation-delay: 0s;
+      animation-duration: 20s;
     }
+
     .aurora-blob:nth-child(2) {
-      width: 500px; height: 500px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, #a78bfa, #7c3aed);
-      top: 30%; right: -10%;
-      animation-delay: -7s; animation-duration: 24s;
+      top: 30%;
+      right: -10%;
+      animation-delay: -7s;
+      animation-duration: 24s;
     }
+
     .aurora-blob:nth-child(3) {
-      width: 400px; height: 400px;
+      width: 400px;
+      height: 400px;
       background: radial-gradient(circle, #6d28d9, #2563eb);
-      bottom: -5%; left: 30%;
-      animation-delay: -13s; animation-duration: 22s;
+      bottom: -5%;
+      left: 30%;
+      animation-delay: -13s;
+      animation-duration: 22s;
     }
+
     @keyframes auroraFloat {
-      0%   { transform: translate(0px,   0px)  scale(1);    }
-      25%  { transform: translate(40px, -30px) scale(1.05); }
-      50%  { transform: translate(-20px, 50px) scale(0.95); }
-      75%  { transform: translate(30px,  20px) scale(1.03); }
-      100% { transform: translate(0px,   0px)  scale(1);    }
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+
+      25% {
+        transform: translate(40px, -30px) scale(1.05);
+      }
+
+      50% {
+        transform: translate(-20px, 50px) scale(0.95);
+      }
+
+      75% {
+        transform: translate(30px, 20px) scale(1.03);
+      }
+
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
     }
+
     /* keep all page content above bg layers */
-    .nav, .hero, .section, .contact-section, .stats,
-    footer, .scroll-top-wrap, header, main, .about,
-    .work, .filter-wrap, .cards-grid { position: relative; z-index: 1; }
+    .nav,
+    .hero,
+    .section,
+    .contact-section,
+    .stats,
+    footer,
+    .scroll-top-wrap,
+    header,
+    main,
+    .about,
+    .work,
+    .filter-wrap,
+    .cards-grid {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 
@@ -1178,8 +1250,8 @@
       </a>
 
       <!-- CARD 2 -->
-      <a href="https://www.behance.net/gallery/246636841/CVPilot-ATS-Resume-Builder-Analyzer" target="_blank" rel="noopener noreferrer"
-        class="proj-card reveal d2" data-cat="web">
+      <a href="https://www.behance.net/gallery/246636841/CVPilot-ATS-Resume-Builder-Analyzer" target="_blank"
+        rel="noopener noreferrer" class="proj-card reveal d2" data-cat="web">
         <div class="card-img">
           <img src="assets/545.jpg.jpeg" alt="Portfolio Redesign">
           <!-- <span class="card-badge badge-feat">Case Study</span> -->
@@ -1191,7 +1263,8 @@
         <div class="card-body">
           <div class="card-tags"><span class="card-tag">Web Design</span><span class="card-tag">Lovable</span></div>
           <h3 class="card-title">CVPilot — ATS Resume Builder & Analyzer</h3>
-          <p class="card-desc">A modern ATS-friendly resume builder and analyzer with real-time preview and actionable insights for job seekers.</p>
+          <p class="card-desc">A modern ATS-friendly resume builder and analyzer with real-time preview and actionable
+            insights for job seekers.</p>
           <div class="card-footer">
             <span class="card-year">2026</span>
             <span class="card-cta">View on Behance <svg viewBox="0 0 24 24">
@@ -1203,10 +1276,10 @@
       </a>
 
       <!-- CARD 3 -->
-      <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer"
-        class="proj-card reveal d3" data-cat="dashboard">
+      <a href="https://www.behance.net/gallery/248284285/HopeTails-Pet-Adoption-Platform-UIUX-Design" target="_blank"
+        rel="noopener noreferrer" class="proj-card reveal d3" data-cat="dashboard">
         <div class="card-img">
-          <div class="card-img-ph">DASH</div>
+          <img src="assets/666.jpg.jpeg" alt="Portfolio Redesign">
           <!-- <span class="card-badge badge-feat">Case Study</span> -->
           <div class="card-arrow"><svg viewBox="0 0 24 24">
               <line x1="7" y1="17" x2="17" y2="7" />
@@ -1214,13 +1287,15 @@
             </svg></div>
         </div>
         <div class="card-body">
-          <div class="card-tags"><span class="card-tag">Dashboard</span><span class="card-tag">Figma</span><span
-              class="card-tag">Data Viz</span></div>
-          <h3 class="card-title">Analytics Dashboard — SaaS Platform</h3>
-          <p class="card-desc">Translating dense datasets into scannable, action-oriented UI components with a clean
-            grid system for a B2B SaaS analytics tool.</p>
+          <div class="card-tags"><span class="card-tag">Ui/Ux Design</span><span class="card-tag">Figma</span><span
+              class="card-tag">Antigravity</span></div>
+          <h3 class="card-title">HopeTails - Pet Adoption Platform</h3>
+          <p class="card-desc">HopeTails is a mobile-first pet adoption platform in Kerala that connects verified
+            rescuers and adopters through trusted listings, medical transparency, and post-adoption tracking—promoting
+            safe, humane adoptions under the “Adopt, Don’t Shop” philosophy.
+          </p>
           <div class="card-footer">
-            <span class="card-year">2024</span>
+            <span class="card-year">2026</span>
             <span class="card-cta">View on Behance <svg viewBox="0 0 24 24">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -1299,10 +1374,10 @@
       <h2 class="contact-title">GET IN TOUCH</h2>
       <p class="contact-sub">Ready to bring your vision to life? Let's connect.</p>
     </div>
-        <form class="c-form reveal d1" id="contactForm" onsubmit="handleForm(event)" novalidate>
-      <input type="text"  class="c-input"    name="name"    placeholder="Full Name"     required />
-      <input type="email" class="c-input"    name="email"   placeholder="Email Address" required />
-      <textarea           class="c-textarea" name="message" placeholder="Message"       required></textarea>
+    <form class="c-form reveal d1" id="contactForm" onsubmit="handleForm(event)" novalidate>
+      <input type="text" class="c-input" name="name" placeholder="Full Name" required />
+      <input type="email" class="c-input" name="email" placeholder="Email Address" required />
+      <textarea class="c-textarea" name="message" placeholder="Message" required></textarea>
       <button type="submit" class="c-submit" id="submitBtn">Submit</button>
       <p class="form-status" id="formStatus"></p>
     </form>
@@ -1456,10 +1531,10 @@
     });
 
     /* FORM */
-   /* ===== EMAILJS FORM ===== */
+    /* ===== EMAILJS FORM ===== */
     // ─── REPLACE these three values with your own from emailjs.com ───
-    const EMAILJS_PUBLIC_KEY  = 'HCoPsdweFUffqWEfX';   // Account → API Keys
-    const EMAILJS_SERVICE_ID  = 'service_yf7lp4p';   // Email Services → Service ID
+    const EMAILJS_PUBLIC_KEY = 'HCoPsdweFUffqWEfX';   // Account → API Keys
+    const EMAILJS_SERVICE_ID = 'service_yf7lp4p';   // Email Services → Service ID
     const EMAILJS_TEMPLATE_ID = 'template_j6tzk4i';  // Email Templates → Template ID
 
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -1480,9 +1555,9 @@
       if (err) err.remove();
     }
     function validateForm(form) {
-      const nameF  = form.querySelector('[name="name"]');
+      const nameF = form.querySelector('[name="name"]');
       const emailF = form.querySelector('[name="email"]');
-      const msgF   = form.querySelector('[name="message"]');
+      const msgF = form.querySelector('[name="message"]');
       let valid = true;
       if (!nameF.value.trim()) {
         setError(nameF, 'Please enter your full name.'); valid = false;
@@ -1502,38 +1577,38 @@
       } else clearError(msgF);
       return valid;
     }
-    document.querySelectorAll('.c-input, .c-textarea').forEach(function(field) {
-      field.addEventListener('input', function() { clearError(field); });
+    document.querySelectorAll('.c-input, .c-textarea').forEach(function (field) {
+      field.addEventListener('input', function () { clearError(field); });
     });
 
     function handleForm(e) {
       e.preventDefault();
-      var form   = e.target;
-      var btn    = document.getElementById('submitBtn');
+      var form = e.target;
+      var btn = document.getElementById('submitBtn');
       var status = document.getElementById('formStatus');
       if (!validateForm(form)) return;
-      btn.disabled     = true;
-      btn.textContent  = 'Sending…';
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
       status.className = 'form-status';
       status.textContent = '';
       emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
-        .then(function() {
-          btn.textContent    = 'Sent ✓';
+        .then(function () {
+          btn.textContent = 'Sent ✓';
           status.textContent = "Message sent! I'll get back to you soon.";
-          status.className   = 'form-status success';
+          status.className = 'form-status success';
           form.reset();
-          setTimeout(function() {
-            btn.disabled       = false;
-            btn.textContent    = 'Submit';
+          setTimeout(function () {
+            btn.disabled = false;
+            btn.textContent = 'Submit';
             status.textContent = '';
           }, 4000);
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.error('EmailJS error:', err);
-          btn.disabled       = false;
-          btn.textContent    = 'Submit';
+          btn.disabled = false;
+          btn.textContent = 'Submit';
           status.textContent = 'Something went wrong. Please try again.';
-          status.className   = 'form-status error';
+          status.className = 'form-status error';
         });
     }
   </script>
