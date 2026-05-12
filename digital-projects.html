@@ -917,6 +917,10 @@
         width: 100%;
       }
 
+      .nav-loader-label {
+        display: none;
+      }
+
     }
 
     @media(max-width:480px) {
@@ -985,7 +989,7 @@
           <polyline points="4,7 6.2,9.2 10,5" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <span id="navLoaderText">Please wait, pixels are dressing up…</span>
+      <span class="nav-loader-label" id="navLoaderLabel">Please wait, pixels are dressing up…</span><span id="navLoaderText"></span>
       <div class="nav-loader-bar-wrap">
         <div class="nav-loader-bar" id="navLoaderBar"></div>
       </div>
@@ -1325,9 +1329,10 @@
     themeBtn.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
     /* ===== IMAGE LOAD TRACKER + NAVBAR TOAST ===== */
-    const loader     = document.getElementById('navLoader');
-    const loaderText = document.getElementById('navLoaderText');
-    const loaderBar  = document.getElementById('navLoaderBar');
+    const loader       = document.getElementById('navLoader');
+    const loaderLabel  = document.getElementById('navLoaderLabel');
+    const loaderText   = document.getElementById('navLoaderText');
+    const loaderBar    = document.getElementById('navLoaderBar');
 
     const trackImgs = Array.from(document.querySelectorAll('.track img'));
     let totalImgs   = trackImgs.length;
@@ -1353,7 +1358,7 @@
 
       const rounded = Math.min(Math.round(displayPct), 100);
       loaderBar.style.width  = rounded + '%';
-      loaderText.textContent = `Pixels dressing up… ${rounded}%`;
+      loaderText.textContent = ` ${rounded}%`;
 
       if (rounded >= 100 && allDone) {
         cancelAnimationFrame(rafId);
@@ -1366,7 +1371,8 @@
     function finishLoader() {
       imagesReady = true;
       loader.classList.add('done');
-      loaderText.textContent = 'Ready!';
+      loaderLabel.style.display = 'none';
+      loaderText.textContent    = 'Ready!';
       loaderBar.style.width  = '100%';
       setTimeout(() => {
         loader.classList.add('hidden');
