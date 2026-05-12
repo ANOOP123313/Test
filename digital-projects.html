@@ -917,9 +917,6 @@
         width: 100%;
       }
 
-      .nav-loader span {
-        display: none;
-      }
     }
 
     @media(max-width:480px) {
@@ -1328,54 +1325,74 @@
     themeBtn.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
     /* ===== IMAGE LOAD TRACKER + NAVBAR TOAST ===== */
-    const loader       = document.getElementById('navLoader');
-    const loaderText   = document.getElementById('navLoaderText');
-    const loaderBar    = document.getElementById('navLoaderBar');
+    const loader     = document.getElementById('navLoader');
+    const loaderText = document.getElementById('navLoaderText');
+    const loaderBar  = document.getElementById('navLoaderBar');
 
-    // Collect ALL track images (originals only, before cloning)
     const trackImgs = Array.from(document.querySelectorAll('.track img'));
     let totalImgs   = trackImgs.length;
     let loadedImgs  = 0;
-    // Carousels are blocked from scrolling until this flag is true
     let imagesReady = false;
+    let realPct     = 0;    // true load progress 0–100
+    let displayPct  = 0;    // smoothly animated display value
+    let allDone     = false;
+    let rafId       = null;
 
-    function onImageSettled() {
-      loadedImgs++;
-      const pct = Math.round((loadedImgs / totalImgs) * 100);
-      loaderBar.style.width = pct + '%';
-      loaderText.textContent = `Pixels dressing up… ${pct}%`;
+    /*
+      Phase 1 (0 → 80 %): fast eased rush — lerp factor 0.055
+      Phase 2 (80 → 100 %): slow crawl — lerp factor 0.018
+      Bar only reaches 100 once allDone is true, so it can never
+      "finish" before the real load is complete.
+    */
+    function animateBar() {
+      const target = allDone ? 100 : Math.min(realPct, 80);
+      const speed  = displayPct < 80 ? 0.055 : 0.018;
 
-      if (loadedImgs >= totalImgs) {
-        allImagesLoaded();
+      displayPct += (target - displayPct) * speed;
+      if (displayPct > 99.6 && allDone) displayPct = 100;
+
+      const rounded = Math.min(Math.round(displayPct), 100);
+      loaderBar.style.width  = rounded + '%';
+      loaderText.textContent = `Pixels dressing up… ${rounded}%`;
+
+      if (rounded >= 100 && allDone) {
+        cancelAnimationFrame(rafId);
+        finishLoader();
+        return;
       }
+      rafId = requestAnimationFrame(animateBar);
     }
 
-    function allImagesLoaded() {
+    function finishLoader() {
       imagesReady = true;
-      // Switch to "done" state briefly before hiding
       loader.classList.add('done');
       loaderText.textContent = 'Ready!';
-      loaderBar.style.width = '100%';
-
+      loaderBar.style.width  = '100%';
       setTimeout(() => {
         loader.classList.add('hidden');
-        // Remove from layout after fade
         setTimeout(() => { loader.style.display = 'none'; }, 520);
       }, 700);
     }
 
-    // Attach load/error to each image
+    function onImageSettled() {
+      loadedImgs++;
+      realPct = Math.round((loadedImgs / totalImgs) * 100);
+      if (loadedImgs >= totalImgs) allDone = true;
+    }
+
     trackImgs.forEach(img => {
       if (img.complete && img.naturalWidth > 0) {
         onImageSettled();
       } else {
         img.addEventListener('load',  onImageSettled, { once: true });
-        img.addEventListener('error', onImageSettled, { once: true }); // count errors too so we never hang
+        img.addEventListener('error', onImageSettled, { once: true });
       }
     });
 
-    // Fallback: if no images at all, dismiss immediately
-    if (totalImgs === 0) allImagesLoaded();
+    if (totalImgs === 0) { allDone = true; realPct = 100; }
+
+    // Kick off the smooth animation loop
+    rafId = requestAnimationFrame(animateBar);
 
     /* ===== SEAMLESS INFINITE CAROUSEL ===== */
     function initCarousel(carousel) {
