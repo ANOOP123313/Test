@@ -143,6 +143,93 @@
       background: var(--nav-bg);
       border: 1px solid rgba(128, 128, 128, .15);
       z-index: 1000;
+      gap: 10px;
+    }
+
+    /* ── LOADING TOAST ── */
+    .nav-loader {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--form-bg);
+      border: 1px solid var(--tog-bdr);
+      border-radius: 100px;
+      backdrop-filter: blur(12px);
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      opacity: 1;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+
+    .nav-loader.hidden {
+      opacity: 0;
+      transform: scale(0.88);
+      pointer-events: none;
+    }
+
+    .nav-loader-spinner {
+      width: 13px;
+      height: 13px;
+      border: 2px solid rgba(139, 92, 246, 0.25);
+      border-top-color: var(--purple);
+      border-radius: 50%;
+      animation: navSpin 0.75s linear infinite;
+      flex-shrink: 0;
+    }
+
+    .nav-loader-done {
+      display: none;
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    .nav-loader-done svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .nav-loader.done .nav-loader-spinner {
+      display: none;
+    }
+
+    .nav-loader.done .nav-loader-done {
+      display: block;
+    }
+
+    @keyframes navSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* progress bar inside the toast */
+    .nav-loader-bar-wrap {
+      width: 52px;
+      height: 3px;
+      background: rgba(139, 92, 246, 0.18);
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-loader-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--p-light), var(--purple));
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    /* nav right group */
+    .nav-right {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0;
     }
 
     .home-btn {
@@ -550,6 +637,11 @@
       .stat-stars {
         justify-content: flex-start;
       }
+
+      /* hide progress bar on very small navs, show just spinner + text */
+      .nav-loader-bar-wrap {
+        display: none;
+      }
     }
 
     /* CONTACT */
@@ -824,6 +916,10 @@
         text-align: center;
         width: 100%;
       }
+
+      .nav-loader span {
+        display: none;
+      }
     }
 
     @media(max-width:480px) {
@@ -835,6 +931,7 @@
         padding: 28px 16px 24px;
       }
     }
+
     .c-input.invalid,
     .c-textarea.invalid {
       border-color: #f87171 !important;
@@ -847,6 +944,8 @@
       margin-top: -6px;
       padding-left: 4px;
     }
+
+    .form-status {
       text-align: center;
       font-size: 14px;
       min-height: 20px;
@@ -879,7 +978,23 @@
         <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H15v-5h-6v5H4a1 1 0 0 1-1-1V9.5z" />
       </svg>
     </a>
-    <div style="display:flex;gap:10px;align-items:center;">
+
+    <!-- LOADING TOAST -->
+    <div class="nav-loader" id="navLoader">
+      <div class="nav-loader-spinner"></div>
+      <div class="nav-loader-done">
+        <svg viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="6.5" stroke="#8b5cf6" stroke-width="1"/>
+          <polyline points="4,7 6.2,9.2 10,5" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span id="navLoaderText">Please wait, pixels are dressing up…</span>
+      <div class="nav-loader-bar-wrap">
+        <div class="nav-loader-bar" id="navLoaderBar"></div>
+      </div>
+    </div>
+
+    <div class="nav-right">
       <button class="theme-tog" id="themeTog" aria-label="Toggle theme">
         <svg class="icon-moon" viewBox="0 0 40 40" fill="none">
           <path
@@ -898,8 +1013,7 @@
           <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
-      <button class="talk-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's
-        Talk</button>
+      <button class="talk-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
     </div>
   </div>
 
@@ -929,7 +1043,7 @@
         <img src="assets/images/posters/Poster 2.jpg" alt="poster 2">
         <img src="assets/images/posters/Poster 3.jpg" alt="poster 3">
         <img src="assets/images/posters/Poster 4.jpg" alt="poster 4">
-        <img src="assets/images/posters/Poster 5.jpg" alt="poster 5">                                     
+        <img src="assets/images/posters/Poster 5.jpg" alt="poster 5">
         <img src="assets/images/posters/Poster 6.jpg" alt="poster 6">
         <img src="assets/images/posters/Poster 7.jpg" alt="poster 7">
         <img src="assets/images/posters/Poster 8.jpg" alt="poster 8">
@@ -951,7 +1065,6 @@
         <img src="assets/images/posters/Poster 24.jpg" alt="poster 24">
         <img src="assets/images/posters/Poster 25.jpg" alt="poster 25">
         <img src="assets/images/posters/Poster 26.jpg" alt="poster 26">
-        <!-- <img src="assets/images/posters/Poster 27.jpg" alt="poster 27"> -->
       </div>
     </div>
   </section>
@@ -973,87 +1086,86 @@
     </div>
   </section>
 
-  <!-- PROFILE PICTURES — 54 images: Row1=p01–p24, Row2=p25–p48, Row3=p49–p54 -->
+  <!-- PROFILE PICTURES -->
   <section class="section">
     <h2>PROFILE PICTURES</h2>
     <div class="profile-wrapper">
 
-      <!-- Row 1: images 1–24 (forward) -->
-<div class="carousel" data-speed="0.5">
-  <div class="track" id="track-profile1">
-    <img src="assets/images/profile/profile (1).jpg" class="profile-img" alt="profile 1">
-    <img src="assets/images/profile/profile (2).jpg" class="profile-img" alt="profile 2">
-    <img src="assets/images/profile/profile (3).jpg" class="profile-img" alt="profile 3">
-    <img src="assets/images/profile/profile (4).jpg" class="profile-img" alt="profile 4">
-    <img src="assets/images/profile/profile (5).jpg" class="profile-img" alt="profile 5">
-    <img src="assets/images/profile/profile (6).jpg" class="profile-img" alt="profile 6">
-    <img src="assets/images/profile/profile (7).jpg" class="profile-img" alt="profile 7">
-    <img src="assets/images/profile/profile (8).jpg" class="profile-img" alt="profile 8">
-    <img src="assets/images/profile/profile (9).jpg" class="profile-img" alt="profile 9">
-    <img src="assets/images/profile/profile (10).jpg" class="profile-img" alt="profile 10">
-    <img src="assets/images/profile/profile (11).jpg" class="profile-img" alt="profile 11">
-    <img src="assets/images/profile/profile (12).jpg" class="profile-img" alt="profile 12">
-    <img src="assets/images/profile/profile (13).jpg" class="profile-img" alt="profile 13">
-    <img src="assets/images/profile/profile (14).jpg" class="profile-img" alt="profile 14">
-    <img src="assets/images/profile/profile (15).jpg" class="profile-img" alt="profile 15">
-    <img src="assets/images/profile/profile (16).jpg" class="profile-img" alt="profile 16">
-    <img src="assets/images/profile/profile (17).jpg" class="profile-img" alt="profile 17">
-    <img src="assets/images/profile/profile (18).jpg" class="profile-img" alt="profile 18">
-  </div>
-</div>
+      <!-- Row 1 -->
+      <div class="carousel" data-speed="0.5">
+        <div class="track" id="track-profile1">
+          <img src="assets/images/profile/profile (1).jpg" class="profile-img" alt="profile 1">
+          <img src="assets/images/profile/profile (2).jpg" class="profile-img" alt="profile 2">
+          <img src="assets/images/profile/profile (3).jpg" class="profile-img" alt="profile 3">
+          <img src="assets/images/profile/profile (4).jpg" class="profile-img" alt="profile 4">
+          <img src="assets/images/profile/profile (5).jpg" class="profile-img" alt="profile 5">
+          <img src="assets/images/profile/profile (6).jpg" class="profile-img" alt="profile 6">
+          <img src="assets/images/profile/profile (7).jpg" class="profile-img" alt="profile 7">
+          <img src="assets/images/profile/profile (8).jpg" class="profile-img" alt="profile 8">
+          <img src="assets/images/profile/profile (9).jpg" class="profile-img" alt="profile 9">
+          <img src="assets/images/profile/profile (10).jpg" class="profile-img" alt="profile 10">
+          <img src="assets/images/profile/profile (11).jpg" class="profile-img" alt="profile 11">
+          <img src="assets/images/profile/profile (12).jpg" class="profile-img" alt="profile 12">
+          <img src="assets/images/profile/profile (13).jpg" class="profile-img" alt="profile 13">
+          <img src="assets/images/profile/profile (14).jpg" class="profile-img" alt="profile 14">
+          <img src="assets/images/profile/profile (15).jpg" class="profile-img" alt="profile 15">
+          <img src="assets/images/profile/profile (16).jpg" class="profile-img" alt="profile 16">
+          <img src="assets/images/profile/profile (17).jpg" class="profile-img" alt="profile 17">
+          <img src="assets/images/profile/profile (18).jpg" class="profile-img" alt="profile 18">
+        </div>
+      </div>
 
-<!-- Row 2: images 25–48 (reverse) -->
-<div class="carousel" data-speed="-0.5">
-  <div class="track" id="track-profile2">
-    <img src="assets/images/profile/profile (19).jpg" class="profile-img" alt="profile 19">
-    <img src="assets/images/profile/profile (20).jpg" class="profile-img" alt="profile 20">
-    <img src="assets/images/profile/profile (21).jpg" class="profile-img" alt="profile 21">
-    <img src="assets/images/profile/profile (22).jpg" class="profile-img" alt="profile 22">
-    <img src="assets/images/profile/profile (23).jpg" class="profile-img" alt="profile 23">
-    <img src="assets/images/profile/profile (24).jpg" class="profile-img" alt="profile 24">
-    <img src="assets/images/profile/profile (25).jpg" class="profile-img" alt="profile 25">
-    <img src="assets/images/profile/profile (26).jpg" class="profile-img" alt="profile 26">
-    <img src="assets/images/profile/profile (27).jpg" class="profile-img" alt="profile 27">
-    <img src="assets/images/profile/profile (28).jpg" class="profile-img" alt="profile 28">
-    <img src="assets/images/profile/profile (29).jpg" class="profile-img" alt="profile 29">
-    <img src="assets/images/profile/profile (30).jpg" class="profile-img" alt="profile 30">
-    <img src="assets/images/profile/profile (31).jpg" class="profile-img" alt="profile 31">
-    <img src="assets/images/profile/profile (32).jpg" class="profile-img" alt="profile 32">
-    <img src="assets/images/profile/profile (33).jpg" class="profile-img" alt="profile 33">
-    <img src="assets/images/profile/profile (34).jpg" class="profile-img" alt="profile 34">
-    <img src="assets/images/profile/profile (35).jpg" class="profile-img" alt="profile 35">
-    <img src="assets/images/profile/profile (36).jpg" class="profile-img" alt="profile 36">
-  </div>
-</div>
+      <!-- Row 2 -->
+      <div class="carousel" data-speed="-0.5">
+        <div class="track" id="track-profile2">
+          <img src="assets/images/profile/profile (19).jpg" class="profile-img" alt="profile 19">
+          <img src="assets/images/profile/profile (20).jpg" class="profile-img" alt="profile 20">
+          <img src="assets/images/profile/profile (21).jpg" class="profile-img" alt="profile 21">
+          <img src="assets/images/profile/profile (22).jpg" class="profile-img" alt="profile 22">
+          <img src="assets/images/profile/profile (23).jpg" class="profile-img" alt="profile 23">
+          <img src="assets/images/profile/profile (24).jpg" class="profile-img" alt="profile 24">
+          <img src="assets/images/profile/profile (25).jpg" class="profile-img" alt="profile 25">
+          <img src="assets/images/profile/profile (26).jpg" class="profile-img" alt="profile 26">
+          <img src="assets/images/profile/profile (27).jpg" class="profile-img" alt="profile 27">
+          <img src="assets/images/profile/profile (28).jpg" class="profile-img" alt="profile 28">
+          <img src="assets/images/profile/profile (29).jpg" class="profile-img" alt="profile 29">
+          <img src="assets/images/profile/profile (30).jpg" class="profile-img" alt="profile 30">
+          <img src="assets/images/profile/profile (31).jpg" class="profile-img" alt="profile 31">
+          <img src="assets/images/profile/profile (32).jpg" class="profile-img" alt="profile 32">
+          <img src="assets/images/profile/profile (33).jpg" class="profile-img" alt="profile 33">
+          <img src="assets/images/profile/profile (34).jpg" class="profile-img" alt="profile 34">
+          <img src="assets/images/profile/profile (35).jpg" class="profile-img" alt="profile 35">
+          <img src="assets/images/profile/profile (36).jpg" class="profile-img" alt="profile 36">
+        </div>
+      </div>
 
-<!-- Row 3: images 49–54 (forward) -->
-<div class="carousel" data-speed="0.5">
-  <div class="track" id="track-profile3">
-    <img src="assets/images/profile/profile (37).jpg" class="profile-img" alt="profile 37">
-    <img src="assets/images/profile/profile (38).jpg" class="profile-img" alt="profile 38">
-    <img src="assets/images/profile/profile (39).jpg" class="profile-img" alt="profile 39">
-    <img src="assets/images/profile/profile (40).jpg" class="profile-img" alt="profile 40">
-    <img src="assets/images/profile/profile (41).jpg" class="profile-img" alt="profile 41">
-    <img src="assets/images/profile/profile (42).jpg" class="profile-img" alt="profile 42">
-    <img src="assets/images/profile/profile (43).jpg" class="profile-img" alt="profile 43">
-    <img src="assets/images/profile/profile (44).jpg" class="profile-img" alt="profile 44">
-    <img src="assets/images/profile/profile (45).jpg" class="profile-img" alt="profile 45">
-    <img src="assets/images/profile/profile (46).jpg" class="profile-img" alt="profile 46">
-    <img src="assets/images/profile/profile (47).jpg" class="profile-img" alt="profile 47">
-    <img src="assets/images/profile/profile (48).jpg" class="profile-img" alt="profile 48">
-    <img src="assets/images/profile/profile (49).jpg" class="profile-img" alt="profile 49">
-    <img src="assets/images/profile/profile (50).jpg" class="profile-img" alt="profile 50">
-    <img src="assets/images/profile/profile (51).jpg" class="profile-img" alt="profile 51">
-    <img src="assets/images/profile/profile (52).jpg" class="profile-img" alt="profile 52">
-    <img src="assets/images/profile/profile (53).jpg" class="profile-img" alt="profile 53">
-    <img src="assets/images/profile/profile (54).jpg" class="profile-img" alt="profile 54">
-    <img src="assets/images/profile/dp1.jpg" class="profile-img" alt="profile 55">
-    <img src="assets/images/profile/dp2.jpg" class="profile-img" alt="profile 56">
-    <img src="assets/images/profile/dp3.jpg" class="profile-img" alt="profile 57">
-    <img src="assets/images/profile/dp4.jpg" class="profile-img" alt="profile 58">
-
-  </div>
-</div>
+      <!-- Row 3 -->
+      <div class="carousel" data-speed="0.5">
+        <div class="track" id="track-profile3">
+          <img src="assets/images/profile/profile (37).jpg" class="profile-img" alt="profile 37">
+          <img src="assets/images/profile/profile (38).jpg" class="profile-img" alt="profile 38">
+          <img src="assets/images/profile/profile (39).jpg" class="profile-img" alt="profile 39">
+          <img src="assets/images/profile/profile (40).jpg" class="profile-img" alt="profile 40">
+          <img src="assets/images/profile/profile (41).jpg" class="profile-img" alt="profile 41">
+          <img src="assets/images/profile/profile (42).jpg" class="profile-img" alt="profile 42">
+          <img src="assets/images/profile/profile (43).jpg" class="profile-img" alt="profile 43">
+          <img src="assets/images/profile/profile (44).jpg" class="profile-img" alt="profile 44">
+          <img src="assets/images/profile/profile (45).jpg" class="profile-img" alt="profile 45">
+          <img src="assets/images/profile/profile (46).jpg" class="profile-img" alt="profile 46">
+          <img src="assets/images/profile/profile (47).jpg" class="profile-img" alt="profile 47">
+          <img src="assets/images/profile/profile (48).jpg" class="profile-img" alt="profile 48">
+          <img src="assets/images/profile/profile (49).jpg" class="profile-img" alt="profile 49">
+          <img src="assets/images/profile/profile (50).jpg" class="profile-img" alt="profile 50">
+          <img src="assets/images/profile/profile (51).jpg" class="profile-img" alt="profile 51">
+          <img src="assets/images/profile/profile (52).jpg" class="profile-img" alt="profile 52">
+          <img src="assets/images/profile/profile (53).jpg" class="profile-img" alt="profile 53">
+          <img src="assets/images/profile/profile (54).jpg" class="profile-img" alt="profile 54">
+          <img src="assets/images/profile/dp1.jpg" class="profile-img" alt="profile 55">
+          <img src="assets/images/profile/dp2.jpg" class="profile-img" alt="profile 56">
+          <img src="assets/images/profile/dp3.jpg" class="profile-img" alt="profile 57">
+          <img src="assets/images/profile/dp4.jpg" class="profile-img" alt="profile 58">
+        </div>
+      </div>
 
     </div>
   </section>
@@ -1105,7 +1217,7 @@
     </button>
   </div>
 
-  <!-- FOOTER — Pinterest removed -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="foot-wrap">
       <div class="foot-left">
@@ -1117,8 +1229,7 @@
           <a href="https://github.com/aswinshaju2004" target="_blank" rel="noopener noreferrer">
             <img src="assets/images/img_github_1.svg" alt="GitHub">
           </a>
-          <a href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA==" target="_blank"
-            rel="noopener noreferrer">
+          <a href="https://www.instagram.com/im_dogxy?igsh=MWgxMXF1MzZiNGMzZA==" target="_blank" rel="noopener noreferrer">
             <img src="assets/images/img_instagram_1.svg" alt="Instagram">
           </a>
           <a href="https://www.behance.net/aswinshaju2004" target="_blank" rel="noopener noreferrer">
@@ -1147,7 +1258,7 @@
         H = canvas.height = window.innerHeight;
       }
 
-      function randomParticle(existing) {
+      function randomParticle() {
         return {
           x: Math.random() * W,
           y: Math.random() * H,
@@ -1177,7 +1288,6 @@
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(${baseColor},${alphaMod})`;
           ctx.fill();
-
           p.x += p.vx;
           p.y += p.vy;
           if (p.x < -5) p.x = W + 5;
@@ -1186,7 +1296,6 @@
           if (p.y > H + 5) p.y = -5;
         });
 
-        // Draw faint connecting lines between close particles
         const lineColor = dark ? '180,140,255' : '100,50,200';
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
@@ -1203,7 +1312,6 @@
             }
           }
         }
-
         requestAnimationFrame(drawParticles);
       }
 
@@ -1219,64 +1327,93 @@
     applyTheme(localStorage.getItem('theme') || 'dark');
     themeBtn.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
-    /* ===== SEAMLESS INFINITE CAROUSEL + TOUCH/MOUSE SWIPE ===== */
-    /*
-      How it works:
-      - Clone the original set of items enough times to always fill 3× viewport width.
-      - rAF loop moves offset by `speed` px/frame. When offset drifts out of the
-        one-set window we silently wrap it — no visible jump, ever.
-      - Touch / mouse drag offsets position directly during the gesture,
-        auto-scroll resumes immediately after release.
-    */
+    /* ===== IMAGE LOAD TRACKER + NAVBAR TOAST ===== */
+    const loader       = document.getElementById('navLoader');
+    const loaderText   = document.getElementById('navLoaderText');
+    const loaderBar    = document.getElementById('navLoaderBar');
+
+    // Collect ALL track images (originals only, before cloning)
+    const trackImgs = Array.from(document.querySelectorAll('.track img'));
+    let totalImgs   = trackImgs.length;
+    let loadedImgs  = 0;
+    // Carousels are blocked from scrolling until this flag is true
+    let imagesReady = false;
+
+    function onImageSettled() {
+      loadedImgs++;
+      const pct = Math.round((loadedImgs / totalImgs) * 100);
+      loaderBar.style.width = pct + '%';
+      loaderText.textContent = `Pixels dressing up… ${pct}%`;
+
+      if (loadedImgs >= totalImgs) {
+        allImagesLoaded();
+      }
+    }
+
+    function allImagesLoaded() {
+      imagesReady = true;
+      // Switch to "done" state briefly before hiding
+      loader.classList.add('done');
+      loaderText.textContent = 'Ready!';
+      loaderBar.style.width = '100%';
+
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        // Remove from layout after fade
+        setTimeout(() => { loader.style.display = 'none'; }, 520);
+      }, 700);
+    }
+
+    // Attach load/error to each image
+    trackImgs.forEach(img => {
+      if (img.complete && img.naturalWidth > 0) {
+        onImageSettled();
+      } else {
+        img.addEventListener('load',  onImageSettled, { once: true });
+        img.addEventListener('error', onImageSettled, { once: true }); // count errors too so we never hang
+      }
+    });
+
+    // Fallback: if no images at all, dismiss immediately
+    if (totalImgs === 0) allImagesLoaded();
+
+    /* ===== SEAMLESS INFINITE CAROUSEL ===== */
     function initCarousel(carousel) {
       const track = carousel.querySelector('.track');
       const speed = parseFloat(carousel.dataset.speed) || 0.6;
-      const GAP = 30; // matches CSS gap
+      const GAP   = 30;
 
       function setup() {
         const origItems = Array.from(track.children);
-        const count = origItems.length;
-        const itemW = origItems[0].offsetWidth;
+        const count     = origItems.length;
+        const itemW     = origItems[0].offsetWidth;
         const singleSetW = count * (itemW + GAP);
 
-        // Clone enough times so total width covers ≥3× viewport (handles any screen size)
         const copies = Math.ceil((window.innerWidth * 3) / singleSetW) + 2;
         for (let i = 0; i < copies; i++) {
           origItems.forEach(el => track.appendChild(el.cloneNode(true)));
         }
 
-        // Start offset: forward starts at 0, reverse starts at -singleSetW so there's
-        // content visible immediately to the right when scrolling right
-        let offset = speed < 0 ? -singleSetW : 0;
-        let paused = false;
-        let dragActive = false;
-        let dragStartX = 0;
+        let offset      = speed < 0 ? -singleSetW : 0;
+        let dragActive  = false;
+        let dragStartX  = 0;
         let dragStartOffset = 0;
-        let velocity = 0;
-        let lastX = 0;
 
-        // Keep offset inside the window of one set so the seamless reset works
         function normalize() {
           while (offset <= -singleSetW) offset += singleSetW;
-          while (offset > 0) offset -= singleSetW;
+          while (offset > 0)           offset -= singleSetW;
         }
 
-        /* Drag / swipe */
         function pointerDown(e) {
           dragActive = true;
-          paused = true;
           carousel.classList.add('dragging');
-          dragStartX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+          dragStartX      = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
           dragStartOffset = offset;
-          lastX = dragStartX;
-          velocity = 0;
           e.preventDefault();
         }
         function pointerMove(e) {
           if (!dragActive) return;
           const cx = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-          velocity = cx - lastX;
-          lastX = cx;
           offset = dragStartOffset + (cx - dragStartX);
           normalize();
           track.style.transform = `translateX(${offset}px)`;
@@ -1284,20 +1421,19 @@
         function pointerUp() {
           if (!dragActive) return;
           dragActive = false;
-          paused = false;
           carousel.classList.remove('dragging');
         }
 
-        carousel.addEventListener('mousedown', pointerDown, { passive: false });
+        carousel.addEventListener('mousedown',  pointerDown, { passive: false });
         carousel.addEventListener('touchstart', pointerDown, { passive: false });
-        window.addEventListener('mousemove', pointerMove);
-        window.addEventListener('touchmove', pointerMove, { passive: true });
-        window.addEventListener('mouseup', pointerUp);
-        window.addEventListener('touchend', pointerUp);
+        window.addEventListener('mousemove',  pointerMove);
+        window.addEventListener('touchmove',  pointerMove, { passive: true });
+        window.addEventListener('mouseup',    pointerUp);
+        window.addEventListener('touchend',   pointerUp);
 
-        /* Auto-scroll rAF */
         function tick() {
-          if (!paused) {
+          // Only auto-scroll once all images are loaded
+          if (imagesReady && !dragActive) {
             offset -= speed;
             normalize();
             track.style.transform = `translateX(${offset}px)`;
@@ -1307,7 +1443,6 @@
         requestAnimationFrame(tick);
       }
 
-      // Measure after layout is complete
       if (document.readyState === 'complete') setup();
       else window.addEventListener('load', setup);
     }
@@ -1319,39 +1454,28 @@
       const container = document.getElementById('starRating');
       if (!container) return;
       container.innerHTML = '';
-      const full = Math.floor(rating);
-      const half = (rating % 1) >= 0.5 ? 1 : 0;
+      const full  = Math.floor(rating);
+      const half  = (rating % 1) >= 0.5 ? 1 : 0;
       const empty = 5 - full - half;
       const starPath = `<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>`;
-      for (let i = 0; i < full; i++) {
-        container.innerHTML += `<span class="star star-full"><svg viewBox="0 0 24 24">${starPath}</svg></span>`;
-      }
-      if (half) {
-        container.innerHTML += `<span class="star-half-wrap">
-        <span class="star-bg"><svg viewBox="0 0 24 24">${starPath}</svg></span>
-        <span class="star-fg"><svg viewBox="0 0 24 24">${starPath}</svg></span>
-      </span>`;
-      }
-      for (let i = 0; i < empty; i++) {
-        container.innerHTML += `<span class="star star-empty"><svg viewBox="0 0 24 24">${starPath}</svg></span>`;
-      }
+      for (let i = 0; i < full; i++)  container.innerHTML += `<span class="star star-full"><svg viewBox="0 0 24 24">${starPath}</svg></span>`;
+      if (half)                        container.innerHTML += `<span class="star-half-wrap"><span class="star-bg"><svg viewBox="0 0 24 24">${starPath}</svg></span><span class="star-fg"><svg viewBox="0 0 24 24">${starPath}</svg></span></span>`;
+      for (let i = 0; i < empty; i++) container.innerHTML += `<span class="star star-empty"><svg viewBox="0 0 24 24">${starPath}</svg></span>`;
     }
 
     function animateCountUp(el) {
-      const target = parseFloat(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
+      const target  = parseFloat(el.dataset.target);
+      const suffix  = el.dataset.suffix || '';
       const decimal = parseInt(el.dataset.decimal) || 0;
-      const dur = 1800; // ms
-      const start = performance.now();
+      const dur     = 1800;
+      const start   = performance.now();
 
       function tick(now) {
-        const elapsed = now - start;
+        const elapsed  = now - start;
         const progress = Math.min(elapsed / dur, 1);
-        // Ease out cubic
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const current = target * ease;
+        const ease     = 1 - Math.pow(1 - progress, 3);
+        const current  = target * ease;
         el.textContent = current.toFixed(decimal) + suffix;
-        // Animate stars alongside rating
         if (el.dataset.decimal) buildStars(current);
         if (progress < 1) requestAnimationFrame(tick);
         else {
@@ -1362,7 +1486,6 @@
       requestAnimationFrame(tick);
     }
 
-    // Trigger on scroll into view using IntersectionObserver
     const statNums = document.querySelectorAll('.stat-num');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1375,28 +1498,20 @@
     statNums.forEach(el => observer.observe(el));
 
     /* ===== IMAGE PROTECTION ===== */
-    // Disable right-click context menu on images
     document.addEventListener('contextmenu', function (e) {
       if (e.target.tagName === 'IMG') e.preventDefault();
     });
-
-    // Block drag-to-save on all images
     document.addEventListener('dragstart', function (e) {
       if (e.target.tagName === 'IMG') e.preventDefault();
     });
-
-    // Block common keyboard shortcuts for saving / viewing source
     document.addEventListener('keydown', function (e) {
       const key = e.key.toLowerCase();
-      // Ctrl+S (save), Ctrl+U (view source), Ctrl+Shift+I / F12 (devtools), Ctrl+Shift+J, Ctrl+Shift+C
       if (e.ctrlKey && (key === 's' || key === 'u')) { e.preventDefault(); return false; }
       if (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) { e.preventDefault(); return false; }
       if (e.key === 'F12') { e.preventDefault(); return false; }
-      // Ctrl+A select all — prevents selecting & dragging all imgs
       if (e.ctrlKey && key === 'a') { e.preventDefault(); return false; }
     });
 
-    // Wrap every img in the carousels with a transparent overlay div after setup
     window.addEventListener('load', function () {
       document.querySelectorAll('.track img').forEach(function (img) {
         const wrap = document.createElement('div');
@@ -1406,16 +1521,13 @@
       });
     });
 
-   /* ===== EMAILJS FORM ===== */
-    // ─── REPLACE these three values with your own from emailjs.com ───
-    const EMAILJS_PUBLIC_KEY  = 'HCoPsdweFUffqWEfX';   // Account → API Keys
-    const EMAILJS_SERVICE_ID  = 'service_yf7lp4p';   // Email Services → Service ID
-    const EMAILJS_TEMPLATE_ID = 'template_j6tzk4i';  // Email Templates → Template ID
-    // ─────────────────────────────────────────────────────────────────
+    /* ===== EMAILJS FORM ===== */
+    const EMAILJS_PUBLIC_KEY  = 'HCoPsdweFUffqWEfX';
+    const EMAILJS_SERVICE_ID  = 'service_yf7lp4p';
+    const EMAILJS_TEMPLATE_ID = 'template_j6tzk4i';
 
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
-    /* ── Validation helpers ── */
     function setError(field, msg) {
       field.classList.add('invalid');
       let err = field.parentElement.querySelector('.field-error');
@@ -1439,14 +1551,12 @@
       const message = form.querySelector('[name="message"]');
       let valid = true;
 
-      // Name — required, at least 2 chars
       if (!name.value.trim()) {
         setError(name, 'Please enter your full name.'); valid = false;
       } else if (name.value.trim().length < 2) {
         setError(name, 'Name must be at least 2 characters.'); valid = false;
       } else clearError(name);
 
-      // Email — required, valid format
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!email.value.trim()) {
         setError(email, 'Please enter your email address.'); valid = false;
@@ -1454,7 +1564,6 @@
         setError(email, 'Please enter a valid email address.'); valid = false;
       } else clearError(email);
 
-      // Message — required, at least 10 chars
       if (!message.value.trim()) {
         setError(message, 'Please write a message.'); valid = false;
       } else if (message.value.trim().length < 10) {
@@ -1464,7 +1573,6 @@
       return valid;
     }
 
-    // Clear error on each field as the user types
     document.querySelectorAll('.c-input, .c-textarea').forEach(field => {
       field.addEventListener('input', () => clearError(field));
     });
@@ -1475,10 +1583,8 @@
       const btn    = document.getElementById('submitBtn');
       const status = document.getElementById('formStatus');
 
-      // Run validation — stop here if invalid
       if (!validateForm(form)) return;
 
-      // Loading state
       btn.disabled     = true;
       btn.textContent  = 'Sending…';
       status.className = 'form-status';
